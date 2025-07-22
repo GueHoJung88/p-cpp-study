@@ -203,6 +203,10 @@ std::vector<Character> initializeCharacters() {
     characters.push_back(Character("골든 리트리버", "리버", 150, 40));
     characters.push_back(Character("비숑 프리제", "숑숑", 90, 15));
     characters.push_back(Character("불독", "불리", 180, 60));
+    characters.push_back(Character("임정찬", "Liki", 10, 1));
+    characters.push_back(Character("정규호", "바보", 10, 2));
+    characters.push_back(Character("싀백", "먀엉", 120, 100));
+
     return characters;
 }
 
