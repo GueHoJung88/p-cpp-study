@@ -6,6 +6,19 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 
+## 📚 프로젝트 문서 / Project Documentation
+
+프로젝트 개발 및 관리를 위한 문서들을 확인하세요:
+
+### 🔧 개발 환경 설정
+- **[VSCode Git Commit 설정 가이드](./docs/vscode-git-commit-setup.md)** - VSCode를 Git 커밋 메시지 에디터로 설정하고 커스텀 템플릿 사용하기
+
+### 🌿 브랜칭 및 협업
+- **[브랜칭 컨벤션 가이드](./docs/branching-convention-with-images.md)** - 프로젝트 브랜칭 전략과 협업 가이드라인
+
+### 📖 추가 문서
+더 많은 개발 문서는 [`docs/`](./docs/) 폴더를 확인하세요.
+
 ## 🌟 프로젝트 소개
 
 이 프로젝트는 **코딩이나 C++에 대한 경험이 없는 사람**을 위한 **실습 기반 C++ 학습 프로젝트**입니다. 개인이나 스터디 그룹이 C++를 쉽고 재미있게 학습할 수 있도록 설계되었습니다.
