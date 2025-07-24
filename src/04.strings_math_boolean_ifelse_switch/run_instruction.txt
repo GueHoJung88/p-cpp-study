@@ -1,0 +1,6 @@
+cd src/04.strings_math_boolean_ifelse_switch/gemini/
+
+g++ String_Interaction.cpp -o Strings_Intercation -std=c++11
+g++ String_Interaction.cpp -o Strings_Intercation -std=c++14
+g++ String_Interaction.cpp -o Strings_Intercation -std=c++17
+
