@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트 결과 리포트</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .passed { color: #28a745; }
+        .failed { color: #dc3545; }
+        .total { color: #007bff; }
+        .test-suite {
+            margin: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .suite-header {
+            background: #e9ecef;
+            padding: 15px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        .test-list {
+            padding: 0;
+            margin: 0;
+        }
+        .test-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .test-item:last-child {
+            border-bottom: none;
+        }
+        .test-status {
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .status-passed {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .timestamp {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 테스트 결과 리포트</h1>
+            <p>자동 생성된 테스트 결과 요약</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number total">36</div>
+                <div>총 테스트</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number passed">36</div>
+                <div>통과</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number failed">0</div>
+                <div>실패</div>
+            </div>
+        </div>
+        
+        <div class="test-suites">
+
+            <div class="test-suite">
+                <div class="suite-header">
+                    📦 CharacterSystemTest 
+                    <span style="float: right;">
+                        36/36 통과
+                    </span>
+                </div>
+                <div class="test-list">
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterCreation_ValidData_CreatesCharacter</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterCreation_EmptyData_CreatesCharacter</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>DetailedConstructor_ValidData_CreatesCharacterWithProfile</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>DetailedConstructor_DifferentSpecies_CreatesCorrectCharacter</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>GainExperience_PositiveValue_IncreasesExperience</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>GainExperience_ZeroValue_NoChange</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>GainExperience_NegativeValue_NoChange</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>LevelUp_SufficientExperience_LevelsUp</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>LevelUp_InsufficientExperience_NoLevelUp</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>GetStatus_ValidCharacter_ReturnsCorrectStatus</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>Display_ValidEmotion_ShowsCorrectOutput</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>Display_DefaultEmotion_ShowsDefaultOutput</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>AllSpecies_DisplayCorrectly</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>ShowProfile_ValidCharacter_ShowsCompleteProfile</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterComparison_DifferentSpecies_NotEqual</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterComparison_SameSpecies_Equal</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterFactory_CreateChihuahua_ReturnsValidCharacter</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterFactory_CreateAllTypes_ReturnsValidCharacters</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterFactory_InitializeAllCharacters_ReturnsCorrectCount</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterManager_AddCharacter_StoresCharacter</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterManager_GetCharacterByName_ReturnsCorrectCharacter</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterManager_GetCharacterBySpecies_ReturnsCorrectCharacter</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterManager_GetCharactersByRole_ReturnsCorrectCharacters</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterManager_GetStrongestCharacter_ReturnsHighestPower</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterManager_GetWeakestCharacter_ReturnsLowestPower</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>CharacterManager_GetAverageLevel_ReturnsCorrectAverage</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>DisplayEmotions_AllEmotions_ShowCorrectOutput</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>HumanCharacters_HaveCorrectProperties</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>MysticalCat_HasCorrectProperties</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>OperatorEquality_SameCharacter_ReturnsTrue</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>OperatorEquality_DifferentCharacter_ReturnsFalse</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>OperatorInequality_DifferentCharacter_ReturnsTrue</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>BoundaryValues_ExtremeExperience_HandlesCorrectly</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>BoundaryValues_EmptyStrings_HandlesCorrectly</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>Performance_MultipleCharacters_HandlesEfficiently</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                    <div class="test-item">
+                        <div>
+                            <strong>Integration_CompleteCharacterLifecycle_WorksCorrectly</strong>
+                            <span style="color: #666; font-size: 0.9em;">(0.000s)</span>
+                        </div>
+                        <span class="test-status status-passed">PASSED</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="timestamp">
+            생성 시간: 2025-07-26 19:39:22
+        </div>
+    </div>
+</body>
+</html>

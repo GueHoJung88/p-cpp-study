@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/cmake_install.cmake",
+		"/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/_deps/googletest-build/cmake_install.cmake",
+		"/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/_deps/googletest-build/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

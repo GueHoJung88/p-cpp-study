@@ -1,0 +1,5 @@
+if(EXISTS "/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/cpp_learning_tests[1]_tests.cmake")
+  include("/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/cpp_learning_tests[1]_tests.cmake")
+else()
+  add_test(cpp_learning_tests_NOT_BUILT cpp_learning_tests_NOT_BUILT)
+endif()
