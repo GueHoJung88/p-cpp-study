@@ -9,7 +9,7 @@
 #include <random>
 #include <fstream>
 #include <sstream>
-#include "Character.h"
+#include "../../../../p_cpp/src/core/Character.h"
 
 using std::cout;
 using std::cin;
