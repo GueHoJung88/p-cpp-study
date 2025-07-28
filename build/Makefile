@@ -561,6 +561,54 @@ tests/test_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_learning_tests.dir/build.make CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.s
 .PHONY : tests/test_utils.cpp.s
 
+tests/test_while_loop_gemini.o: tests/test_while_loop_gemini.cpp.o
+.PHONY : tests/test_while_loop_gemini.o
+
+# target to build an object file
+tests/test_while_loop_gemini.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_learning_tests.dir/build.make CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o
+.PHONY : tests/test_while_loop_gemini.cpp.o
+
+tests/test_while_loop_gemini.i: tests/test_while_loop_gemini.cpp.i
+.PHONY : tests/test_while_loop_gemini.i
+
+# target to preprocess a source file
+tests/test_while_loop_gemini.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_learning_tests.dir/build.make CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.i
+.PHONY : tests/test_while_loop_gemini.cpp.i
+
+tests/test_while_loop_gemini.s: tests/test_while_loop_gemini.cpp.s
+.PHONY : tests/test_while_loop_gemini.s
+
+# target to generate assembly for a file
+tests/test_while_loop_gemini.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_learning_tests.dir/build.make CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.s
+.PHONY : tests/test_while_loop_gemini.cpp.s
+
+tests/test_while_loop_gpt.o: tests/test_while_loop_gpt.cpp.o
+.PHONY : tests/test_while_loop_gpt.o
+
+# target to build an object file
+tests/test_while_loop_gpt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_learning_tests.dir/build.make CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o
+.PHONY : tests/test_while_loop_gpt.cpp.o
+
+tests/test_while_loop_gpt.i: tests/test_while_loop_gpt.cpp.i
+.PHONY : tests/test_while_loop_gpt.i
+
+# target to preprocess a source file
+tests/test_while_loop_gpt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_learning_tests.dir/build.make CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.i
+.PHONY : tests/test_while_loop_gpt.cpp.i
+
+tests/test_while_loop_gpt.s: tests/test_while_loop_gpt.cpp.s
+.PHONY : tests/test_while_loop_gpt.s
+
+# target to generate assembly for a file
+tests/test_while_loop_gpt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_learning_tests.dir/build.make CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.s
+.PHONY : tests/test_while_loop_gpt.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -619,6 +667,12 @@ help:
 	@echo "... tests/test_utils.o"
 	@echo "... tests/test_utils.i"
 	@echo "... tests/test_utils.s"
+	@echo "... tests/test_while_loop_gemini.o"
+	@echo "... tests/test_while_loop_gemini.i"
+	@echo "... tests/test_while_loop_gemini.s"
+	@echo "... tests/test_while_loop_gpt.o"
+	@echo "... tests/test_while_loop_gpt.i"
+	@echo "... tests/test_while_loop_gpt.s"
 .PHONY : help
 
 

@@ -125,10 +125,38 @@ CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/guehojung/study_group/p_cpp/tests/test_utils.cpp -o CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.s
 
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o: CMakeFiles/cpp_learning_tests.dir/flags.make
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o: /home/guehojung/study_group/p_cpp/tests/test_while_loop_gemini.cpp
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o: CMakeFiles/cpp_learning_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o -MF CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o.d -o CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o -c /home/guehojung/study_group/p_cpp/tests/test_while_loop_gemini.cpp
+
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/guehojung/study_group/p_cpp/tests/test_while_loop_gemini.cpp > CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.i
+
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/guehojung/study_group/p_cpp/tests/test_while_loop_gemini.cpp -o CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.s
+
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o: CMakeFiles/cpp_learning_tests.dir/flags.make
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o: /home/guehojung/study_group/p_cpp/tests/test_while_loop_gpt.cpp
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o: CMakeFiles/cpp_learning_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o -MF CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o.d -o CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o -c /home/guehojung/study_group/p_cpp/tests/test_while_loop_gpt.cpp
+
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/guehojung/study_group/p_cpp/tests/test_while_loop_gpt.cpp > CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.i
+
+CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/guehojung/study_group/p_cpp/tests/test_while_loop_gpt.cpp -o CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.s
+
 CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o: CMakeFiles/cpp_learning_tests.dir/flags.make
 CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o: /home/guehojung/study_group/p_cpp/src/core/Character.cpp
 CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o: CMakeFiles/cpp_learning_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o -MF CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o.d -o CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o -c /home/guehojung/study_group/p_cpp/src/core/Character.cpp
 
 CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.i: cmake_force
@@ -142,7 +170,7 @@ CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.s: cmake_force
 CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o: CMakeFiles/cpp_learning_tests.dir/flags.make
 CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o: /home/guehojung/study_group/p_cpp/src/core/QuizSystem.cpp
 CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o: CMakeFiles/cpp_learning_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o -MF CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o.d -o CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o -c /home/guehojung/study_group/p_cpp/src/core/QuizSystem.cpp
 
 CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.i: cmake_force
@@ -156,7 +184,7 @@ CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.s: cmake_force
 CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o: CMakeFiles/cpp_learning_tests.dir/flags.make
 CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o: /home/guehojung/study_group/p_cpp/src/core/LearningModule.cpp
 CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o: CMakeFiles/cpp_learning_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o -MF CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o.d -o CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o -c /home/guehojung/study_group/p_cpp/src/core/LearningModule.cpp
 
 CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.s: cmake_force
 CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o: CMakeFiles/cpp_learning_tests.dir/flags.make
 CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o: /home/guehojung/study_group/p_cpp/src/core/Utils.cpp
 CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o: CMakeFiles/cpp_learning_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o -MF CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o.d -o CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.o -c /home/guehojung/study_group/p_cpp/src/core/Utils.cpp
 
 CMakeFiles/cpp_learning_tests.dir/src/core/Utils.cpp.i: cmake_force
@@ -187,6 +215,8 @@ cpp_learning_tests_OBJECTS = \
 "CMakeFiles/cpp_learning_tests.dir/tests/test_quiz_system.cpp.o" \
 "CMakeFiles/cpp_learning_tests.dir/tests/test_learning_modules.cpp.o" \
 "CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.o" \
+"CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o" \
+"CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o" \
 "CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o" \
 "CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o" \
 "CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o" \
@@ -199,6 +229,8 @@ cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/tests/test_character_syste
 cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/tests/test_quiz_system.cpp.o
 cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/tests/test_learning_modules.cpp.o
 cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.o
+cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o
+cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o
 cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/src/core/Character.cpp.o
 cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/src/core/QuizSystem.cpp.o
 cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/src/core/LearningModule.cpp.o
@@ -208,7 +240,7 @@ cpp_learning_tests: lib/libgtest.a
 cpp_learning_tests: lib/libgtest_main.a
 cpp_learning_tests: lib/libgtest.a
 cpp_learning_tests: CMakeFiles/cpp_learning_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable cpp_learning_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/guehojung/study_group/p_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable cpp_learning_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpp_learning_tests.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -D TEST_TARGET=cpp_learning_tests -D TEST_EXECUTABLE=/home/guehojung/study_group/p_cpp/build/cpp_learning_tests -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/home/guehojung/study_group/p_cpp/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=cpp_learning_tests_TESTS -D CTEST_FILE=/home/guehojung/study_group/p_cpp/build/cpp_learning_tests[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P /usr/share/cmake-3.28/Modules/GoogleTestAddTests.cmake
 

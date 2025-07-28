@@ -36,6 +36,8 @@ set(TEST_SOURCES
     tests/test_quiz_system.cpp
     tests/test_learning_modules.cpp
     tests/test_utils.cpp
+    tests/test_while_loop_gemini.cpp
+    tests/test_while_loop_gpt.cpp
 )
 
 # 메인 실행 파일

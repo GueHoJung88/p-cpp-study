@@ -16,6 +16,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/guehojung/study_group/p_cpp/tests/test_learning_modules.cpp" "CMakeFiles/cpp_learning_tests.dir/tests/test_learning_modules.cpp.o" "gcc" "CMakeFiles/cpp_learning_tests.dir/tests/test_learning_modules.cpp.o.d"
   "/home/guehojung/study_group/p_cpp/tests/test_quiz_system.cpp" "CMakeFiles/cpp_learning_tests.dir/tests/test_quiz_system.cpp.o" "gcc" "CMakeFiles/cpp_learning_tests.dir/tests/test_quiz_system.cpp.o.d"
   "/home/guehojung/study_group/p_cpp/tests/test_utils.cpp" "CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.o" "gcc" "CMakeFiles/cpp_learning_tests.dir/tests/test_utils.cpp.o.d"
+  "/home/guehojung/study_group/p_cpp/tests/test_while_loop_gemini.cpp" "CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o" "gcc" "CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gemini.cpp.o.d"
+  "/home/guehojung/study_group/p_cpp/tests/test_while_loop_gpt.cpp" "CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o" "gcc" "CMakeFiles/cpp_learning_tests.dir/tests/test_while_loop_gpt.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
