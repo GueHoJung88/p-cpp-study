@@ -1,6 +1,7 @@
 #include "QuizSystem.h"
 #include <iostream>
 #include <algorithm>
+#include <climits>
 
 namespace learning {
 

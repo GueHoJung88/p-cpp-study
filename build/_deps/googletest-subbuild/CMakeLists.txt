@@ -1,7 +1,7 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
-# file LICENSE.rst or https://cmake.org/licensing for details.
+# file Copyright.txt or https://cmake.org/licensing for details.
 
-cmake_minimum_required(VERSION 4.0.3)
+cmake_minimum_required(VERSION 3.28.3)
 
 # Reject any attempt to use a toolchain file. We must not use one because
 # we could be downloading it here. If the CMAKE_TOOLCHAIN_FILE environment
@@ -19,17 +19,17 @@ project(googletest-populate NONE)
 # Pass through things we've already detected in the main project to avoid
 # paying the cost of redetecting them again in ExternalProject_Add()
 set(GIT_EXECUTABLE [==[/usr/bin/git]==])
-set(GIT_VERSION_STRING [==[2.39.2 (Apple Git-143)]==])
+set(GIT_VERSION_STRING [==[2.43.0]==])
 set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[/usr/bin/git;2.39.2 (Apple Git-143)]==]
+  [==[/usr/bin/git;2.43.0]==]
 )
 
 
 include(ExternalProject)
 ExternalProject_Add(googletest-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/google/googletest.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "release-1.12.1"
-                    SOURCE_DIR          "/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/_deps/googletest-src"
-                    BINARY_DIR          "/Users/emotionalmachine/Documents/AddInEdu/Project/p-cpp-study/build/_deps/googletest-build"
+                    SOURCE_DIR          "/home/guehojung/study_group/p_cpp/build/_deps/googletest-src"
+                    BINARY_DIR          "/home/guehojung/study_group/p_cpp/build/_deps/googletest-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""
