@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/SuperMario.dir/src/main.cpp.o -o SuperMario  libglad.a -lSDL2::SDL2 /usr/lib/x86_64-linux-gnu/libGL.so -ldl 
