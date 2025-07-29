@@ -66,7 +66,7 @@ int main() {
                 std::cout << "잘못된 메뉴 선택입니다. 다시 시도해주세요.\n";
                 break;
         }
-    } while (choice != 5); // choice가 5가 아닐 동안 루프 반복 
+    } while (choice <= 5); // choice가 5가 아닐 동안 루프 반복 
 
     return 0;
 }

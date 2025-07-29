@@ -68,7 +68,7 @@ int main() {
                 std::cout << "잘못된 메뉴 선택입니다. 다시 시도해주세요.\n";
                 break;
         }
-    } while (choice != 5);
+    } while (choice <= 5);
 
     return 0;
 }
