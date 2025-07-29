@@ -1,0 +1,143 @@
+C++ While Loop
+C++ Loops
+Loops can execute a block of code as long as a specified condition is reached.
+
+Loops are handy because they save time, reduce errors, and they make code more readable.
+
+C++ While Loop
+The while loop loops through a block of code as long as a specified condition is true:
+
+Syntax
+while (condition) {
+  // code block to be executed
+}
+In the example below, the code in the loop will run, over and over again, as long as a variable (i) is less than 5:
+
+Example
+int i = 0;
+while (i < 5) {
+  cout << i << "\n";
+  i++;
+}
+Note: Do not forget to increase the variable used in the condition (i++), otherwise the loop will never end!
+
+Do you wonder why we use the letter i as a variable name? It's a counter variable and a common choice in simple loops because it's short, traditional, and stands for 'index' or 'iterator'.
+
+Countdown Example
+This example counts down from 3 to 1 and then displays "Happy New Year!!" at the end:
+
+Example
+int countdown = 3;
+
+while (countdown > 0) {
+  cout << countdown << "\n";
+  countdown--;
+}
+
+cout << "Happy New Year!!\n";
+
+
+C++ Do/While Loop
+The Do/While Loop
+The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true. Then it will repeat the loop as long as the condition is true.
+
+Syntax
+do {
+  // code block to be executed
+}
+while (condition);
+Note: The semicolon ; after the while condition is required!
+
+Do/While Example
+The example below uses a do/while loop. The loop will always be executed at least once, even if the condition is false, because the code block is executed before the condition is tested.
+
+Example
+int i = 0;
+do {
+  cout << i << "\n";
+  i++;
+}
+while (i < 5);
+Do not forget to increase the variable used in the condition (i++), otherwise the loop will never end!
+
+Condition is False from the Start
+In the example above, the condition i < 5 was true at the beginning, so the loop executed multiple times. But what if the condition is false right from the start?
+
+In the example below, the variable i starts at 10, so the condition i < 5 is false immediately - yet the do/while loop still runs once:
+
+Example
+int i = 10;
+do {
+  cout << "i is " << i << "\n";
+  i++;
+} while (i < 5);
+Summary
+The do/while loop always runs at least once, even if the condition is already false. This is different from a regular while loop, which would skip the loop entirely if the condition is false at the start.
+
+This behavior makes do/while useful when you want to ensure something happens at least once, like showing a message or asking for user input.
+
+Practical Example: User Input
+This example keeps asking the user to enter a positive number. The loop stops when the user enters 0 or a negative number:
+
+Example
+int number;
+do {
+  cout << "Enter a positive number: ";
+  cin >> number;
+} while (number > 0);
+
+
+C++ While Loop Examples
+Real Life Example
+To demonstrate a practical example of the while loop, we have created a simple "countdown" program:
+
+Example
+int countdown = 3;
+
+while (countdown > 0) {
+  cout << countdown << "\n";
+  countdown--;
+}
+
+cout << "Happy New Year!!\n";
+In this example, we create a program that only print even numbers between 0 and 10 (inclusive):
+
+Example
+int i = 0;
+
+while (i <= 10) {
+  cout << i << "\n";
+  i += 2;
+}
+In this example we use a while loop to reverse some numbers:
+
+Example
+// A variable with some specific numbers
+int numbers = 12345;
+
+// A variable to store the reversed number
+int revNumbers = 0;
+
+// Reverse and reorder the numbers
+while (numbers) {
+  // Get the last number of 'numbers' and add it to 'revNumbers'
+  revNumbers = revNumbers * 10 + numbers % 10;
+  // Remove the last number of 'numbers'
+  numbers /= 10;
+}
+
+cout << "Reversed numbers: " << revNumbers << "\n";
+To demonstrate a practical example of the while loop combined with an if else statement, let's say we play a game of Yatzy:
+
+Example
+int dice = 1;
+
+while (dice <= 6) {
+  if (dice < 6) {
+    cout << "No Yatzy\n";
+  } else {
+    cout << "Yatzy!\n";
+  }
+  dice = dice + 1;
+}
+If the loop passes the values ranging from 1 to 5, it prints "No Yatzy". Whenever it passes the value 6, it prints "Yatzy!".

@@ -1,0 +1,5 @@
+if(EXISTS "/home/guehojung/study_group/p_cpp/build/cpp_learning_tests[1]_tests.cmake")
+  include("/home/guehojung/study_group/p_cpp/build/cpp_learning_tests[1]_tests.cmake")
+else()
+  add_test(cpp_learning_tests_NOT_BUILT cpp_learning_tests_NOT_BUILT)
+endif()
