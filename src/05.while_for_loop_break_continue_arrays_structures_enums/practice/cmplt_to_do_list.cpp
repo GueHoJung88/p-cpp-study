@@ -43,6 +43,14 @@ int main() {
         std::cout << "메뉴를 선택하세요: ";
 
         std::cin >> choice; // 사용자 입력 받기 
+
+        if (std::cin.fail()) {
+            std::cin.clear(); // 오류 상태 제거
+            clearInputBuffer(); // 남은 입력 제거
+            std::cout << "숫자를 입력해주세요. 다시 시도해주세요.\n";
+            continue;
+        }
+
         clearInputBuffer(); // 숫자 입력 후 남은 개행 문자 처리
 
         // switch 문을 사용하여 사용자 선택에 따른 기능 실행 
@@ -87,6 +95,7 @@ void addTask() {
     }
 
     std::cout << "\n--- 할 일 추가 ---\n";
+
     std::cout << "새로운 할 일 내용을 입력하세요: ";
     std::getline(std::cin, todoList[taskCount].description); // 할 일 내용 입력 [cite: 4]
 
