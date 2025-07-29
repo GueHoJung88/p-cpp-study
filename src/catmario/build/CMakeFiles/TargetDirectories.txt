@@ -1,0 +1,4 @@
+/home/user/dev_ws/MarioGame2/build/CMakeFiles/glad.dir
+/home/user/dev_ws/MarioGame2/build/CMakeFiles/MarioGame2.dir
+/home/user/dev_ws/MarioGame2/build/CMakeFiles/edit_cache.dir
+/home/user/dev_ws/MarioGame2/build/CMakeFiles/rebuild_cache.dir
