@@ -1,4 +1,4 @@
-username:q
+username:
 reviewQuizScore:0
 finalQuizScore:0
 practiceQuizScore:0

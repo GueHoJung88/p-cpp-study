@@ -1,4 +1,4 @@
-username:q
+username:
 whileLoopScore:0
 totalQuestions:10
 lastStudyDate:
