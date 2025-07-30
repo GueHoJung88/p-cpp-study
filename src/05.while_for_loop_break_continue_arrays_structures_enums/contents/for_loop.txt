@@ -1,0 +1,152 @@
+C++ For Loop
+C++ For Loop
+When you know exactly how many times you want to loop through a block of code, use the for loop instead of a while loop:
+
+Syntax
+for (statement 1; statement 2; statement 3) {
+  // code block to be executed
+}
+Statement 1 is executed (one time) before the execution of the code block.
+
+Statement 2 defines the condition for executing the code block.
+
+Statement 3 is executed (every time) after the code block has been executed.
+
+Print Numbers
+The example below will print the numbers 0 to 4:
+
+Example
+for (int i = 0; i < 5; i++) {
+  cout << i << "\n";
+}
+Example explained
+
+Statement 1 sets a variable before the loop starts: int i = 0
+Statement 2 defines the condition for the loop to run: i < 5. If the condition is true, the loop will start over again, if it is false, the loop will end.
+Statement 3 increases a value each time the code block in the loop has been executed: i++
+Print Even Numbers
+This example prints even values between 0 and 10:
+
+Example
+for (int i = 0; i <= 10; i = i + 2) {
+  cout << i << "\n";
+}
+Sum of Numbers
+This example calculates the sum of numbers from 1 to 5:
+
+Example
+int sum = 0;
+for (int i = 1; i <= 5; i++) {
+  sum = sum + i;
+}
+cout << "Sum is " << sum;
+Countdown
+This example prints a countdown from 5 to 1:
+
+Example
+for (int i = 5; i > 0; i--) {
+  cout << i << "\n";
+}
+
+
+
+C++ Nested Loops
+Nested Loops
+It is also possible to place a loop inside another loop. This is called a nested loop.
+
+The "inner loop" will be executed one time for each iteration of the "outer loop":
+
+Example
+// Outer loop
+for (int i = 1; i <= 2; ++i) {
+  cout << "Outer: " << i << "\n"; // Executes 2 times
+
+  // Inner loop
+  for (int j = 1; j <= 3; ++j) {
+    cout << " Inner: " << j << "\n"; // Executes 6 times (2 * 3)
+  }
+}
+Multiplication Table Example
+This example uses nested loops to print a simple multiplication table (1 to 3):
+
+Example
+for (int i = 1; i <= 3; i++) {
+  for (int j = 1; j <= 3; j++) {
+    cout << i * j << " ";
+  }
+  cout << "\n";
+}
+Result:
+
+1 2 3
+2 4 6
+3 6 9
+Nested loops are useful when working with tables, matrices, or multi-dimensional data structures.
+
+
+
+C++ The foreach Loop
+The foreach Loop
+There is also a "for-each loop" (also known as ranged-based for loop), which is used to loop through elements in an array (or other data structures):
+
+Syntax
+for (type variableName : arrayName) {
+  // code block to be executed
+}
+The following example outputs all elements in an array, using a "for-each loop":
+
+Example
+int myNumbers[5] = {10, 20, 30, 40, 50};
+for (int i : myNumbers) {
+  cout << i << "\n";
+}
+Loop Through a String
+You can also use a for-each loop to loop through characters in a string:
+
+Example
+string word = "Hello";
+for (char c : word) {
+  cout << c << "\n";
+}
+Note: Don't worry if you don't understand the examples above. You will learn more about arrays in the C++ Arrays chapter.
+
+Good to know: The for-each loop was introduced in C++ version 11 (2011).
+
+
+
+C++ For Loop Examples
+Real Life Example
+To demonstrate a practical example of the for loop, let's create a program that counts to 100 by tens:
+
+Example
+for (int i = 0; i <= 100; i += 10) {
+  cout << i << "\n";
+}
+In this example, we create a program that only print even numbers between 0 and 10 (inclusive):
+
+Example
+for (int i = 0; i <= 10; i = i + 2) {
+  cout << i << "\n";
+}
+Here we only print odd numbers:
+
+Example
+for (int i = 1; i <= 10; i = i + 2) {
+  cout << i << "\n";
+}
+In this example we print the powers of 2 up to 512:
+
+Example
+for (int i = 2; i <= 512; i *= 2) {
+  cout << i << "\n";
+}
+And in this example, we create a program that prints the multiplication table for a specified number:
+
+Example
+int number = 2;
+int i;
+
+// Print the multiplication table for the number 2
+for (i = 1; i <= 10; i++) {
+  cout << number << " x " << i << " = " << number * i << "\n";
+}

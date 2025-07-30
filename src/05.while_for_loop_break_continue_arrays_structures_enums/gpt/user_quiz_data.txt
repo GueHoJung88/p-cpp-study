@@ -1,9 +1,0 @@
-username:q
-reviewQuizScore:0
-finalQuizScore:0
-practiceQuizScore:0
-totalReviewQuestions:0
-totalFinalQuestions:0
-totalPracticeQuestions:0
-lastQuizDate:
-completedCategories:

@@ -108,387 +108,512 @@ std::string Character::getSpeciesString() const {
     }
 }
 
-void Character::setSpecies(const std::string& s) {
-    if (s == "치와와" || s == "Chihuahua") species = Species::CHIHUAHUA;
-    else if (s == "웰시코기" || s == "Welsh Corgi") species = Species::WELSH_CORGI;
-    else if (s == "골든리트리버" || s == "Golden Retriever") species = Species::GOLDEN_RETRIEVER;
-    else if (s == "허스키" || s == "Husky") species = Species::HUSKY;
-    else if (s == "토끼" || s == "Rabbit") species = Species::RABBIT;
-    else if (s == "고양이" || s == "Cat") species = Species::CAT;
-    else if (s == "말티즈" || s == "Maltese") species = Species::MALTESE;
-    else if (s == "비숑 프리제" || s == "Bichon Frise") species = Species::BICHON_FRISE;
-    else if (s == "불독" || s == "Bulldog") species = Species::BULLDOG;
-    else if (s == "임정찬" || s == "Liki") species = Species::HUMAN_LIKI;
-    else if (s == "정규호" || s == "바보") species = Species::HUMAN_BABO;
-    else if (s == "싀백" || s == "먀엉") species = Species::MYSTICAL_CAT;
+// 문자열을 Species enum으로 변환
+void Character::setSpecies(const std::string& speciesStr) {
+    if (speciesStr == "치와와") species = Species::CHIHUAHUA;
+    else if (speciesStr == "웰시코기") species = Species::WELSH_CORGI;
+    else if (speciesStr == "골든리트리버") species = Species::GOLDEN_RETRIEVER;
+    else if (speciesStr == "허스키") species = Species::HUSKY;
+    else if (speciesStr == "토끼") species = Species::RABBIT;
+    else if (speciesStr == "고양이") species = Species::CAT;
+    else if (speciesStr == "말티즈") species = Species::MALTESE;
+    else if (speciesStr == "비숑 프리제") species = Species::BICHON_FRISE;
+    else if (speciesStr == "불독") species = Species::BULLDOG;
+    else if (speciesStr == "임정찬") species = Species::HUMAN_LIKI;
+    else if (speciesStr == "정규호") species = Species::HUMAN_BABO;
+    else if (speciesStr == "싀백") species = Species::MYSTICAL_CAT;
     else species = Species::CHIHUAHUA; // 기본값
 }
 
-// 문자열 기반 display 메서드 (기존 코드 호환)
-void Character::display(const std::string& emotion) const {
-    Emotion e = Emotion::DEFAULT;
-    
-    if (emotion == "happy") e = Emotion::HAPPY;
-    else if (emotion == "sad") e = Emotion::SAD;
-    else if (emotion == "thinking") e = Emotion::THINKING;
-    else if (emotion == "surprised") e = Emotion::SURPRISED;
-    else if (emotion == "angry") e = Emotion::ANGRY;
-    else if (emotion == "explain") e = Emotion::EXPLAIN;
-    else if (emotion == "quiz") e = Emotion::QUIZ;
-    else if (emotion == "judge") e = Emotion::JUDGE;
-    else if (emotion == "correct") e = Emotion::CORRECT;
-    else if (emotion == "wrong") e = Emotion::WRONG;
-    
-    display(e);
-}
-
-// 경험치 획득
+// 경험치 획득 및 레벨업
 void Character::gainExperience(int exp) {
-    if (exp > 0) {
-        experience += exp;
-        // levelUp()은 별도로 호출하도록 변경
-    }
-}
-
-// 레벨업
-bool Character::levelUp() {
-    if (experience >= maxExperience) {
-        level++;
+    experience += exp;
+    while (experience >= maxExperience) {
         experience -= maxExperience;
-        maxExperience = level * 100; // 레벨에 따라 필요 경험치 증가
+        level++;
+        maxExperience = level * 100; // 레벨업 시 필요 경험치 증가
         hp += 10; // 레벨업 시 HP 증가
-        power += 5; // 레벨업 시 파워 증가
-        return true;
+        power += 5; // 레벨업 시 공격력 증가
     }
-    return false;
 }
 
-// 상태 정보 반환
-std::string Character::getStatus() const {
-    return "Level: " + std::to_string(level) + 
-           ", Experience: " + std::to_string(experience) + "/" + std::to_string(maxExperience) +
-           ", HP: " + std::to_string(hp) + 
-           ", Power: " + std::to_string(power);
-}
-
-// 캐릭터 표시
+// 업데이트된 display 함수 - Gemini Character.h의 상세 이미지 통합
 void Character::display(Emotion emotion) const {
-    std::cout << "=== " << name << " (" << getSpeciesString() << ") ===" << std::endl;
-    auto it = emotionArt.find(emotion);
-    if (it != emotionArt.end()) {
-        for (const auto& line : it->second) {
-            std::cout << line << std::endl;
-        }
-    } else {
-        // 기본 감정으로 표시
-        auto defaultIt = emotionArt.find(Emotion::DEFAULT);
-        if (defaultIt != emotionArt.end()) {
-            for (const auto& line : defaultIt->second) {
-                std::cout << line << std::endl;
-            }
-        }
+    std::cout << "--- " << name << " (" << getSpeciesString() << ") | 현재 감정: " << getEmotionString(emotion) << " ---" << std::endl;
+
+    // 종별 상세 ASCII 아트 출력
+    switch (species) {
+        case Species::CHIHUAHUA:
+            displayChihuahua(emotion);
+            break;
+        case Species::WELSH_CORGI:
+            displayWelshCorgi(emotion);
+            break;
+        case Species::GOLDEN_RETRIEVER:
+            displayGoldenRetriever(emotion);
+            break;
+        case Species::HUSKY:
+            displayHusky(emotion);
+            break;
+        case Species::RABBIT:
+            displayRabbit(emotion);
+            break;
+        case Species::CAT:
+            displayCat(emotion);
+            break;
+        case Species::MALTESE:
+            displayMaltese(emotion);
+            break;
+        case Species::BICHON_FRISE:
+            displayBichonFrise(emotion);
+            break;
+        case Species::BULLDOG:
+            displayBulldog(emotion);
+            break;
+        case Species::HUMAN_LIKI:
+            displayHumanLiki(emotion);
+            break;
+        case Species::HUMAN_BABO:
+            displayHumanBabo(emotion);
+            break;
+        case Species::MYSTICAL_CAT:
+            displayMysticalCat(emotion);
+            break;
+        default:
+            displayDefault(emotion);
+            break;
     }
+    std::cout << "-----------------------------------" << std::endl;
 }
 
 // 메시지와 함께 표시
 void Character::displayWithMessage(Emotion emotion, const std::string& message) const {
     display(emotion);
-    std::cout << name << ": " << message << std::endl;
+    std::cout << "[" << name << "]: " << message << std::endl;
 }
 
-// 감정 문자열 반환
+// 감정을 문자열로 변환
 std::string Character::getEmotionString(Emotion emotion) const {
     switch (emotion) {
-        case Emotion::DEFAULT: return "기본";
-        case Emotion::HAPPY: return "행복";
-        case Emotion::SAD: return "슬픔";
-        case Emotion::THINKING: return "생각";
-        case Emotion::SURPRISED: return "놀람";
-        case Emotion::ANGRY: return "화남";
-        case Emotion::EXPLAIN: return "설명";
-        case Emotion::QUIZ: return "퀴즈";
-        case Emotion::JUDGE: return "채점";
-        case Emotion::CORRECT: return "정답";
-        case Emotion::WRONG: return "오답";
-        default: return "기본";
+        case Emotion::HAPPY: return "happy";
+        case Emotion::SAD: return "sad";
+        case Emotion::THINKING: return "thinking";
+        case Emotion::SURPRISED: return "surprised";
+        case Emotion::ANGRY: return "angry";
+        case Emotion::EXPLAIN: return "explain";
+        case Emotion::QUIZ: return "quiz";
+        case Emotion::JUDGE: return "judge";
+        case Emotion::CORRECT: return "correct";
+        case Emotion::WRONG: return "wrong";
+        default: return "default";
     }
 }
 
-// 프로필 표시
-void Character::showProfile() const {
-    std::cout << "=== " << name << "의 프로필 ===" << std::endl;
-    std::cout << "종류: " << getSpeciesString() << std::endl;
-    std::cout << "역할: " << role << std::endl;
-    std::cout << "나이: " << age << "세" << std::endl;
-    std::cout << "재산: " << assets << "원" << std::endl;
-    std::cout << "출신지: " << hometown << std::endl;
-    std::cout << "성별: " << gender << std::endl;
-    std::cout << "사회적 지위: " << social_status << std::endl;
-    std::cout << "이상형: " << ideal_type << std::endl;
-    std::cout << "미래 희망: " << future_hope << std::endl;
-    std::cout << "약점: " << weakness << std::endl;
-    std::cout << "체력(HP): " << hp << ", 공격력(Power): " << power << std::endl;
-    std::cout << getStatus() << std::endl;
+// 종별 상세 ASCII 아트 출력 함수들
+void Character::displayChihuahua(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (o.o)" << std::endl;
+            std::cout << " / > o  \"히히! 정말 좋아! 간식 줄래?\"" << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (T_T)" << std::endl;
+            std::cout << " / > ;  \"너무 슬퍼... 누가 나 좀 안아줘...\"" << std::endl;
+            break;
+        case Emotion::SURPRISED:
+            std::cout << " (\\o_o/)" << std::endl;
+            std::cout << " ( O_O )" << std::endl;
+            std::cout << " / > !  \"깜짝이야! 간식이 어디서 나타났지!?\"" << std::endl;
+            break;
+        case Emotion::THINKING:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (._.?)" << std::endl;
+            std::cout << " / > ?  \"음... 뭘까? 간식에 대한 고찰...\"" << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << " (>_<)" << std::endl;
+            std::cout << " (o`_`o)" << std::endl;
+            std::cout << " / > #  \"내 간식 건드리지 마! 물어버릴 거야!\"" << std::endl;
+            break;
+        default:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (*.*)" << std::endl;
+            std::cout << " / >   " << std::endl;
+            break;
+    }
 }
 
-// 연산자 오버로딩
-bool Character::operator==(const Character& other) const {
-    return species == other.species && name == other.name;
+void Character::displayWelshCorgi(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << " (o.o)" << std::endl;
+            std::cout << " /-----\\" << std::endl;
+            std::cout << "  |   |   \"기분 최고야! 콩콩! 산책 가자!\"" << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << " (T.T)" << std::endl;
+            std::cout << " /-----\\" << std::endl;
+            std::cout << "  |   |   \"산책... 못 가서 슬퍼...\"" << std::endl;
+            break;
+        case Emotion::SURPRISED:
+            std::cout << " (O.O)" << std::endl;
+            std::cout << " /!---!\\" << std::endl;
+            std::cout << "  |   |   \"헉! 내 빵!\"" << std::endl;
+            break;
+        case Emotion::THINKING:
+            std::cout << " (._.?)" << std::endl;
+            std::cout << " /-----\\" << std::endl;
+            std::cout << "  |   |   \"정답이 뭐더라...\"" << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << " (`_`)" << std::endl;
+            std::cout << " /--#--\\" << std::endl;
+            std::cout << "  |   |   \"내 방석 누가 가져갔어!\"" << std::endl;
+            break;
+        default:
+            std::cout << " (o.o)" << std::endl;
+            std::cout << " /-----\\" << std::endl;
+            std::cout << "  |   | " << std::endl;
+            break;
+    }
 }
 
-bool Character::operator!=(const Character& other) const {
-    return !(*this == other);
+void Character::displayHusky(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << "  /^ ^\\" << std::endl;
+            std::cout << " ( >_< )" << std::endl;
+            std::cout << "  |U U|  \"가자! 모험의 시간이다!\"" << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << "  /^ ^\\" << std::endl;
+            std::cout << " ( ._. )" << std::endl;
+            std::cout << "  |...|  \"혼자는 외로워...\"" << std::endl;
+            break;
+        case Emotion::SURPRISED:
+            std::cout << "  /^o^\\" << std::endl;
+            std::cout << " ( O_O )" << std::endl;
+            std::cout << "  |! !|  \"저건... 곰인가!?\"" << std::endl;
+            break;
+        case Emotion::THINKING:
+            std::cout << "  /^ ?^\\" << std::endl;
+            std::cout << " ( -_- )" << std::endl;
+            std::cout << "  |U U|  \"음, 논리적으로 생각해보자.\"" << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << "  /^ ^\\" << std::endl;
+            std::cout << " ( >A< )" << std::endl;
+            std::cout << "  |# #|  \"누가 내 밥그릇에 손댔어!\"" << std::endl;
+            break;
+        default:
+            std::cout << "  /^ ^\\" << std::endl;
+            std::cout << " ( * * )" << std::endl;
+            std::cout << "  |U U| " << std::endl;
+            break;
+    }
 }
 
-// 정적 팩토리 메서드들
-Character Character::createChihuahua(const std::string& name, const std::string& role) {
-    return Character(name, Species::CHIHUAHUA, role);
+void Character::displayRabbit(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << " (\\(\\ " << std::endl;
+            std::cout << " (^_^) " << std::endl;
+            std::cout << " o( )o  \"당근! 맛있어!\"" << std::endl;
+            break;
+        default:
+            std::cout << " (\\(\\ " << std::endl;
+            std::cout << " (T_T)" << std::endl;
+            std::cout << " o( )o  \"힝... 어려워...\"" << std::endl;
+            break;
+    }
 }
 
-Character Character::createWelshCorgi(const std::string& name, const std::string& role) {
-    return Character(name, Species::WELSH_CORGI, role);
+void Character::displayCat(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << " /\\_/\\ " << std::endl;
+            std::cout << " (^_^) " << std::endl;
+            std::cout << " (   )  \"나름 재미있네옹~\"" << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << " /\\_/\\ " << std::endl;
+            std::cout << " (-_-) " << std::endl;
+            std::cout << " (   )  \"흥, 시시하다냥.\"" << std::endl;
+            break;
+        default:
+            std::cout << " /\\_/\\ " << std::endl;
+            std::cout << " (*_*) " << std::endl;
+            std::cout << " (   ) " << std::endl;
+            break;
+    }
 }
 
-Character Character::createGoldenRetriever(const std::string& name, const std::string& role) {
-    return Character(name, Species::GOLDEN_RETRIEVER, role);
+void Character::displayMaltese(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << " (\\_/) " << std::endl;
+            std::cout << " (^_^)" << std::endl;
+            std::cout << "  o o   \"고구마라니! 심장이 뛴다!\"" << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << " (\\_/) " << std::endl;
+            std::cout << " (T_T)" << std::endl;
+            std::cout << "  o o   \"사료는 싫단 말이야...\"" << std::endl;
+            break;
+        case Emotion::SURPRISED:
+            std::cout << " (\\_O/) " << std::endl;
+            std::cout << " (O.O)" << std::endl;
+            std::cout << "  o o   \"앗! 간식 소리!\"" << std::endl;
+            break;
+        case Emotion::THINKING:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (._.?)" << std::endl;
+            std::cout << "  o o   \"흠... 이 시간에 누가 왔지?\"" << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << " (\\_/) " << std::endl;
+            std::cout << " (>_<)" << std::endl;
+            std::cout << "  o o   \"내 잠 방해하지 마!\"" << std::endl;
+            break;
+        default:
+            std::cout << " (\\_/) " << std::endl;
+            std::cout << " (._.)" << std::endl;
+            std::cout << "  o o " << std::endl;
+            break;
+    }
 }
 
-Character Character::createHusky(const std::string& name, const std::string& role) {
-    return Character(name, Species::HUSKY, role);
+void Character::displayBichonFrise(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (^_^)" << std::endl;
+            std::cout << " / >   \"안녕하세요! 귀여운 비숑이에요!\"" << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (T_T)" << std::endl;
+            std::cout << " / >   \"미용이 필요해요...\"" << std::endl;
+            break;
+        default:
+            std::cout << " (\\_/)" << std::endl;
+            std::cout << " (*.*)" << std::endl;
+            std::cout << " / >   " << std::endl;
+            break;
+    }
 }
 
-Character Character::createRabbit(const std::string& name, const std::string& role) {
-    return Character(name, Species::RABBIT, role);
+void Character::displayBulldog(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << "  (o_o)" << std::endl;
+            std::cout << " /-----\\" << std::endl;
+            std::cout << "  |   |   \"힘세고 강한 불독이에요!\"" << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << "  (>_<)" << std::endl;
+            std::cout << " /--#--\\" << std::endl;
+            std::cout << "  |   |   \"누가 내 영역을 침범했어!\"" << std::endl;
+            break;
+        default:
+            std::cout << "  (o_o)" << std::endl;
+            std::cout << " /-----\\" << std::endl;
+            std::cout << "  |   | " << std::endl;
+            break;
+    }
 }
 
-Character Character::createCat(const std::string& name, const std::string& role) {
-    return Character(name, Species::CAT, role);
+void Character::displayHumanLiki(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << "  (^_^)  \"와! 이해했어요!\"" << std::endl;
+            std::cout << "  /| |\\ " << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << "  (T_T)  \"이게 아닌데...\"" << std::endl;
+            std::cout << "  /| |\\ " << std::endl;
+            break;
+        case Emotion::SURPRISED:
+            std::cout << "  (O_O)  \"헉! 이렇게 되는 거였어요?\"" << std::endl;
+            std::cout << "  /| |\\ " << std::endl;
+            break;
+        case Emotion::THINKING:
+            std::cout << "  (._.)  \"음... 뭐가 문제지...?\"" << std::endl;
+            std::cout << "  /| |\\ " << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << "  (>_<)  \"아, 왜 안 되는 거야!\"" << std::endl;
+            std::cout << "  /| |\\ " << std::endl;
+            break;
+        default:
+            std::cout << "  (*_*)  \"리키입니다!\"" << std::endl;
+            std::cout << "  /| |\\ " << std::endl;
+            break;
+    }
 }
 
-Character Character::createMaltese(const std::string& name, const std::string& role) {
-    return Character(name, Species::MALTESE, role);
+void Character::displayHumanBabo(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << "  (^_^)  \"바보입니다! 하하!\"" << std::endl;
+            std::cout << "   / \\   " << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << "  (T_T)  \"바보라서 슬퍼요...\"" << std::endl;
+            std::cout << "   / \\   " << std::endl;
+            break;
+        case Emotion::SURPRISED:
+            std::cout << "  (O_O)  \"바보라서 놀랐어요!\"" << std::endl;
+            std::cout << "   / \\   " << std::endl;
+            break;
+        case Emotion::THINKING:
+            std::cout << "  (._.?)  \"바보라서 생각해요...\"" << std::endl;
+            std::cout << "   / \\   " << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << "  (>_<)  \"이거 아니면 안 돼! 난 천재인데!\"" << std::endl;
+            std::cout << "  /| |\\ " << std::endl;
+            break;
+        default:
+            std::cout << "  (^o^)  \"바보입니다! 하하!\"" << std::endl;
+            std::cout << "   / \\   " << std::endl;
+            break;
+    }
 }
 
-Character Character::createBichonFrise(const std::string& name, const std::string& role) {
-    return Character(name, Species::BICHON_FRISE, role);
+void Character::displayMysticalCat(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " ( o_o ) \"흐음, 제법이군. 야옹~\"" << std::endl;
+            std::cout << " ( ~~~ )  " << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " ( ._. ) \"기대에 미치지 못하는구나... 냐아...\"" << std::endl;
+            std::cout << " ( ~~~ )  " << std::endl;
+            break;
+        case Emotion::SURPRISED:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " ( O_O ) \"놀랍군! 예상을 뛰어넘는 답이다! 갸릉~\"" << std::endl;
+            std::cout << " ( ~~~ )  " << std::endl;
+            break;
+        case Emotion::THINKING:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " ( -_- ) \"깊이 생각해보아라... 진정한 지혜란 무엇인가...\"" << std::endl;
+            std::cout << " ( ~~~ )  " << std::endl;
+            break;
+        case Emotion::ANGRY:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " ( >A< ) \"어리석은 대답이로다! 감히 나의 지혜에 도전하느냐!\"" << std::endl;
+            std::cout << " ( ~~~ )  " << std::endl;
+            break;
+        default:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " ( ^_~ ) " << std::endl;
+            std::cout << " ( ~~~ )  " << std::endl;
+            break;
+    }
 }
 
-Character Character::createBulldog(const std::string& name, const std::string& role) {
-    return Character(name, Species::BULLDOG, role);
+void Character::displayGoldenRetriever(Emotion emotion) const {
+    switch (emotion) {
+        case Emotion::HAPPY:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " (^_^)  \"친구가 되어요! 공놀이 할까요?\"" << std::endl;
+            std::cout << " (   )  " << std::endl;
+            break;
+        case Emotion::SAD:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " (T_T)  \"친구가 없어서 슬퍼요...\"" << std::endl;
+            std::cout << " (   )  " << std::endl;
+            break;
+        default:
+            std::cout << "  /\\_/\\  " << std::endl;
+            std::cout << " (*_*)  " << std::endl;
+            std::cout << " (   )  " << std::endl;
+            break;
+    }
 }
 
-Character Character::createHumanLiki(const std::string& name, const std::string& role) {
-    return Character(name, Species::HUMAN_LIKI, role);
+void Character::displayDefault(Emotion emotion) const {
+    std::cout << name << " (" << getSpeciesString() << ") " << std::endl;
+    std::cout << " (\\_/) " << std::endl;
+    std::cout << " ('.')" << std::endl;
+    std::cout << " o(\")(\") " << std::endl;
 }
 
-Character Character::createHumanBabo(const std::string& name, const std::string& role) {
-    return Character(name, Species::HUMAN_BABO, role);
-}
-
-Character Character::createMysticalCat(const std::string& name, const std::string& role) {
-    return Character(name, Species::MYSTICAL_CAT, role);
-}
-
-// 기존 코드 호환성을 위한 정적 메서드들
-std::vector<Character> Character::initializeCharacters() {
-    std::vector<Character> characters;
-    characters.push_back(Character("치와와", "치치", 80, 20));
-    characters.push_back(Character("웰시코기", "코코", 120, 30));
-    characters.push_back(Character("허스키", "허허", 200, 50));
-    characters.push_back(Character("토끼", "토토", 50, 5));
-    characters.push_back(Character("고양이", "냥냥", 70, 25));
-    characters.push_back(Character("골든 리트리버", "리버", 150, 40));
-    characters.push_back(Character("비숑 프리제", "숑숑", 90, 15));
-    characters.push_back(Character("불독", "불리", 180, 60));
-    characters.push_back(Character("임정찬", "Liki", 10, 1));
-    characters.push_back(Character("정규호", "바보", 10, 2));
-    characters.push_back(Character("싀백", "먀엉", 120, 100));
-    return characters;
-}
-
-std::vector<Character> Character::getDefaultCharacters() {
-    return initializeCharacters();
-}
-
-// 모든 캐릭터 초기화
-std::vector<Character> Character::initializeAllCharacters() {
-    std::vector<Character> characters;
-    characters.push_back(createChihuahua());
-    characters.push_back(createWelshCorgi());
-    characters.push_back(createGoldenRetriever());
-    characters.push_back(createHusky());
-    characters.push_back(createRabbit());
-    characters.push_back(createCat());
-    characters.push_back(createMaltese());
-    characters.push_back(createBichonFrise());
-    characters.push_back(createBulldog());
-    characters.push_back(createHumanLiki());
-    characters.push_back(createHumanBabo());
-    characters.push_back(createMysticalCat());
-    return characters;
-}
-
-// ASCII 아트 초기화 메서드들
+// ASCII 아트 초기화 함수들 (기존 코드 유지)
 void Character::initializeChihuahuaArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "치와와 " + name
-    };
-    emotionArt[Emotion::HAPPY] = {
-        "  /\\_/\\",
-        " ( ^.^ )",
-        "  > ^ <",
-        "행복한 " + name
-    };
-    emotionArt[Emotion::SAD] = {
-        "  /\\_/\\",
-        " ( T.T )",
-        "  > ^ <",
-        "슬픈 " + name
-    };
-    emotionArt[Emotion::THINKING] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "생각하는 " + name
-    };
-    emotionArt[Emotion::SURPRISED] = {
-        "  /\\_/\\",
-        " ( O.O )",
-        "  > ^ <",
-        "놀란 " + name
-    };
-    emotionArt[Emotion::ANGRY] = {
-        "  /\\_/\\",
-        " ( >.< )",
-        "  > ^ <",
-        "화난 " + name
-    };
+    // 기본 초기화 - 상세 아트는 display 함수에서 처리
 }
 
 void Character::initializeWelshCorgiArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "웰시코기 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeGoldenRetrieverArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "골든리트리버 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeHuskyArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "허스키 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeRabbitArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "토끼 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeCatArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "고양이 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeMalteseArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "말티즈 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeBichonFriseArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "비숑 프리제 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeBulldogArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "불독 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeHumanLikiArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  (^_^)",
-        "  /|\\",
-        "  / \\",
-        "인간 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeHumanBaboArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  (^_^)",
-        "  /|\\",
-        "  / \\",
-        "인간 " + name
-    };
+    // 기본 초기화
 }
 
 void Character::initializeMysticalCatArt() {
-    emotionArt[Emotion::DEFAULT] = {
-        "  /\\_/\\",
-        " ( o.o )",
-        "  > ^ <",
-        "신비한 고양이 " + name
-    };
+    // 기본 초기화
 }
 
 // CharacterManager 구현
+// CharacterManager 생성자는 헤더에서 default로 선언됨
+
 void CharacterManager::addCharacter(const Character& character) {
     characters.push_back(character);
 }
 
-size_t CharacterManager::getCharacterCount() const {
-    return characters.size();
-}
-
 Character* CharacterManager::getCharacterByName(const std::string& name) {
-    for (auto& character : characters) {
-        if (character.getName() == name) {
-            return &character;
+    for (auto& chara : characters) {
+        if (chara.getName() == name) {
+            return &chara;
         }
     }
     return nullptr;
 }
 
 Character* CharacterManager::getCharacterBySpecies(Species species) {
-    for (auto& character : characters) {
-        if (character.getSpecies() == species) {
-            return &character;
+    for (auto& chara : characters) {
+        if (chara.getSpecies() == species) {
+            return &chara;
         }
     }
     return nullptr;
@@ -496,19 +621,39 @@ Character* CharacterManager::getCharacterBySpecies(Species species) {
 
 std::vector<Character> CharacterManager::getCharactersByRole(const std::string& role) const {
     std::vector<Character> result;
-    for (const auto& character : characters) {
-        if (character.getRole() == role) {
-            result.push_back(character);
+    for (const auto& chara : characters) {
+        if (chara.getRole() == role) {
+            result.push_back(chara);
         }
     }
     return result;
 }
 
+std::vector<Character> CharacterManager::getAllCharacters() const {
+    return characters;
+}
+
+void CharacterManager::removeCharacter(const std::string& name) {
+    characters.erase(
+        std::remove_if(characters.begin(), characters.end(),
+            [&name](const Character& chara) { return chara.getName() == name; }),
+        characters.end()
+    );
+}
+
+void CharacterManager::clear() {
+    characters.clear();
+}
+
+size_t CharacterManager::getCharacterCount() const {
+    return characters.size();
+}
+
 std::vector<Character> CharacterManager::getCharactersByHometown(const std::string& hometown) const {
     std::vector<Character> result;
-    for (const auto& character : characters) {
-        if (character.getHometown() == hometown) {
-            result.push_back(character);
+    for (const auto& chara : characters) {
+        if (chara.getHometown() == hometown) {
+            result.push_back(chara);
         }
     }
     return result;
@@ -517,47 +662,296 @@ std::vector<Character> CharacterManager::getCharactersByHometown(const std::stri
 Character* CharacterManager::getStrongestCharacter() const {
     if (characters.empty()) return nullptr;
     
-    Character* strongest = const_cast<Character*>(&characters[0]);
-    for (const auto& character : characters) {
-        if (character.getPower() > strongest->getPower()) {
-            strongest = const_cast<Character*>(&character);
+    const Character* strongest = &characters[0];
+    for (const auto& chara : characters) {
+        if (chara.getPower() > strongest->getPower()) {
+            strongest = &chara;
         }
     }
-    return strongest;
+    return const_cast<Character*>(strongest);
 }
 
 Character* CharacterManager::getWeakestCharacter() const {
     if (characters.empty()) return nullptr;
     
-    Character* weakest = const_cast<Character*>(&characters[0]);
-    for (const auto& character : characters) {
-        if (character.getPower() < weakest->getPower()) {
-            weakest = const_cast<Character*>(&character);
+    const Character* weakest = &characters[0];
+    for (const auto& chara : characters) {
+        if (chara.getPower() < weakest->getPower()) {
+            weakest = &chara;
         }
     }
-    return weakest;
+    return const_cast<Character*>(weakest);
 }
 
 double CharacterManager::getAverageLevel() const {
     if (characters.empty()) return 0.0;
     
-    int totalLevel = 0;
-    for (const auto& character : characters) {
-        totalLevel += character.getLevel();
+    double sum = 0.0;
+    for (const auto& chara : characters) {
+        sum += chara.getLevel();
     }
-    return static_cast<double>(totalLevel) / characters.size();
+    return sum / characters.size();
 }
 
-void CharacterManager::removeCharacter(const std::string& name) {
-    characters.erase(
-        std::remove_if(characters.begin(), characters.end(),
-            [&name](const Character& c) { return c.getName() == name; }),
-        characters.end()
-    );
+// Character 클래스의 정적 팩토리 메서드들
+Character Character::createChihuahua(const std::string& name, const std::string& role) {
+    return CharacterFactory::createChihuahua(name, role);
 }
 
-void CharacterManager::clear() {
-    characters.clear();
+Character Character::createWelshCorgi(const std::string& name, const std::string& role) {
+    return CharacterFactory::createWelshCorgi(name, role);
+}
+
+Character Character::createGoldenRetriever(const std::string& name, const std::string& role) {
+    return CharacterFactory::createGoldenRetriever(name, role);
+}
+
+Character Character::createHusky(const std::string& name, const std::string& role) {
+    return CharacterFactory::createHusky(name, role);
+}
+
+Character Character::createRabbit(const std::string& name, const std::string& role) {
+    return CharacterFactory::createRabbit(name, role);
+}
+
+Character Character::createCat(const std::string& name, const std::string& role) {
+    return CharacterFactory::createCat(name, role);
+}
+
+Character Character::createMaltese(const std::string& name, const std::string& role) {
+    return CharacterFactory::createMaltese(name, role);
+}
+
+Character Character::createBichonFrise(const std::string& name, const std::string& role) {
+    return CharacterFactory::createBichonFrise(name, role);
+}
+
+Character Character::createBulldog(const std::string& name, const std::string& role) {
+    return CharacterFactory::createBulldog(name, role);
+}
+
+Character Character::createHumanLiki(const std::string& name, const std::string& role) {
+    return CharacterFactory::createHumanLiki(name, role);
+}
+
+Character Character::createHumanBabo(const std::string& name, const std::string& role) {
+    return CharacterFactory::createHumanBabo(name, role);
+}
+
+Character Character::createMysticalCat(const std::string& name, const std::string& role) {
+    return CharacterFactory::createMysticalCat(name, role);
+}
+
+std::vector<Character> Character::initializeCharacters() {
+    return CharacterFactory::initializeAllCharacters();
+}
+
+std::vector<Character> Character::getDefaultCharacters() {
+    return CharacterFactory::initializeAllCharacters();
+}
+
+std::vector<Character> Character::initializeAllCharacters() {
+    return CharacterFactory::initializeAllCharacters();
+}
+
+// CharacterFactory 구현
+Character CharacterFactory::createChihuahua(const std::string& name, const std::string& role) {
+    Character chara(name, Species::CHIHUAHUA, role);
+    chara.setAge(5);
+    chara.setAssets(100);
+    chara.setHometown("댕댕월드");
+    chara.setGender("비밀");
+    chara.setSocialStatus("모험가 지망생");
+    chara.setIdealType("맛있는 거 주는 사람");
+    chara.setFutureHope("세상 모든 공을 모으는 것");
+    chara.setWeakness("진공청소기 소리");
+    chara.setHp(80);
+    chara.setPower(20);
+    return chara;
+}
+
+Character CharacterFactory::createWelshCorgi(const std::string& name, const std::string& role) {
+    Character chara(name, Species::WELSH_CORGI, role);
+    chara.setAge(6);
+    chara.setAssets(150);
+    chara.setHometown("댕댕월드");
+    chara.setGender("비밀");
+    chara.setSocialStatus("산책 전문가");
+    chara.setIdealType("함께 산책하는 사람");
+    chara.setFutureHope("세상 모든 공원을 탐험하기");
+    chara.setWeakness("높은 곳");
+    chara.setHp(120);
+    chara.setPower(30);
+    return chara;
+}
+
+Character CharacterFactory::createGoldenRetriever(const std::string& name, const std::string& role) {
+    Character chara(name, Species::GOLDEN_RETRIEVER, role);
+    chara.setAge(7);
+    chara.setAssets(200);
+    chara.setHometown("댕댕월드");
+    chara.setGender("비밀");
+    chara.setSocialStatus("친구 만들기 전문가");
+    chara.setIdealType("공놀이 하는 사람");
+    chara.setFutureHope("모든 생물과 친구되기");
+    chara.setWeakness("외로움");
+    chara.setHp(150);
+    chara.setPower(40);
+    return chara;
+}
+
+Character CharacterFactory::createHusky(const std::string& name, const std::string& role) {
+    Character chara(name, Species::HUSKY, role);
+    chara.setAge(8);
+    chara.setAssets(300);
+    chara.setHometown("눈의 나라");
+    chara.setGender("비밀");
+    chara.setSocialStatus("모험가");
+    chara.setIdealType("함께 모험하는 사람");
+    chara.setFutureHope("세상 모든 산을 정복하기");
+    chara.setWeakness("더위");
+    chara.setHp(200);
+    chara.setPower(50);
+    return chara;
+}
+
+Character CharacterFactory::createRabbit(const std::string& name, const std::string& role) {
+    Character chara(name, Species::RABBIT, role);
+    chara.setAge(3);
+    chara.setAssets(50);
+    chara.setHometown("토끼굴");
+    chara.setGender("비밀");
+    chara.setSocialStatus("당근 수집가");
+    chara.setIdealType("당근 주는 사람");
+    chara.setFutureHope("세상 모든 당근을 모으기");
+    chara.setWeakness("늑대");
+    chara.setHp(50);
+    chara.setPower(5);
+    return chara;
+}
+
+Character CharacterFactory::createCat(const std::string& name, const std::string& role) {
+    Character chara(name, Species::CAT, role);
+    chara.setAge(4);
+    chara.setAssets(80);
+    chara.setHometown("고양이 마을");
+    chara.setGender("비밀");
+    chara.setSocialStatus("고양이");
+    chara.setIdealType("간식 주는 사람");
+    chara.setFutureHope("평생 따뜻한 곳에서 잠자기");
+    chara.setWeakness("물");
+    chara.setHp(70);
+    chara.setPower(25);
+    return chara;
+}
+
+Character CharacterFactory::createMaltese(const std::string& name, const std::string& role) {
+    Character chara(name, Species::MALTESE, role);
+    chara.setAge(13);
+    chara.setAssets(500);
+    chara.setHometown("댕댕월드 외곽");
+    chara.setGender("암컷");
+    chara.setSocialStatus("은퇴한 산책 마스터");
+    chara.setIdealType("정시에 고구마를 바치는 자");
+    chara.setFutureHope("평생 고구마밭에서 뒹굴기");
+    chara.setWeakness("발바닥 만지기");
+    chara.setHp(130);
+    chara.setPower(35);
+    return chara;
+}
+
+Character CharacterFactory::createBichonFrise(const std::string& name, const std::string& role) {
+    Character chara(name, Species::BICHON_FRISE, role);
+    chara.setAge(5);
+    chara.setAssets(120);
+    chara.setHometown("댕댕월드");
+    chara.setGender("비밀");
+    chara.setSocialStatus("미용 모델");
+    chara.setIdealType("예쁘게 해주는 사람");
+    chara.setFutureHope("세상에서 가장 예쁜 강아지 되기");
+    chara.setWeakness("더러워지는 것");
+    chara.setHp(90);
+    chara.setPower(15);
+    return chara;
+}
+
+Character CharacterFactory::createBulldog(const std::string& name, const std::string& role) {
+    Character chara(name, Species::BULLDOG, role);
+    chara.setAge(9);
+    chara.setAssets(400);
+    chara.setHometown("강아지 마을");
+    chara.setGender("비밀");
+    chara.setSocialStatus("경비원");
+    chara.setIdealType("함께 지키는 사람");
+    chara.setFutureHope("세상 모든 것을 지키기");
+    chara.setWeakness("더위");
+    chara.setHp(180);
+    chara.setPower(60);
+    return chara;
+}
+
+Character CharacterFactory::createHumanLiki(const std::string& name, const std::string& role) {
+    Character chara(name, Species::HUMAN_LIKI, role);
+    chara.setAge(10);
+    chara.setAssets(500);
+    chara.setHometown("서울 어딘가");
+    chara.setGender("남성");
+    chara.setSocialStatus("코딩 꿈나무");
+    chara.setIdealType("코딩 잘 가르쳐주는 형, 누나");
+    chara.setFutureHope("로봇을 만드는 프로그래머");
+    chara.setWeakness("어려운 수학 문제");
+    chara.setHp(10);
+    chara.setPower(1);
+    return chara;
+}
+
+Character CharacterFactory::createHumanBabo(const std::string& name, const std::string& role) {
+    Character chara(name, Species::HUMAN_BABO, role);
+    chara.setAge(12);
+    chara.setAssets(100);
+    chara.setHometown("바보 마을");
+    chara.setGender("남성");
+    chara.setSocialStatus("바보");
+    chara.setIdealType("바보를 이해하는 사람");
+    chara.setFutureHope("세상에서 가장 유명한 바보 되기");
+    chara.setWeakness("복잡한 생각");
+    chara.setHp(10);
+    chara.setPower(2);
+    return chara;
+}
+
+Character CharacterFactory::createMysticalCat(const std::string& name, const std::string& role) {
+    Character chara(name, Species::MYSTICAL_CAT, role);
+    chara.setAge(1000);
+    chara.setAssets(10000);
+    chara.setHometown("신비의 숲");
+    chara.setGender("비밀");
+    chara.setSocialStatus("지식의 수호자");
+    chara.setIdealType("지혜를 추구하는 자");
+    chara.setFutureHope("세상 모든 지혜를 모으기");
+    chara.setWeakness("어리석은 질문");
+    chara.setHp(120);
+    chara.setPower(100);
+    return chara;
+}
+
+std::vector<Character> CharacterFactory::initializeAllCharacters() {
+    std::vector<Character> characters;
+    
+    characters.push_back(createChihuahua("치치", "선생님"));
+    characters.push_back(createWelshCorgi("코코", "도우미"));
+    characters.push_back(createGoldenRetriever("리버", "친구"));
+    characters.push_back(createHusky("허허", "모험가"));
+    characters.push_back(createRabbit("토토", "학생"));
+    characters.push_back(createCat("냥냥", "고양이"));
+    characters.push_back(createMaltese("보리", "주인공"));
+    characters.push_back(createBichonFrise("숑숑", "미용사"));
+    characters.push_back(createBulldog("불리", "경비원"));
+    characters.push_back(createHumanLiki("리키", "학생"));
+    characters.push_back(createHumanBabo("바보", "바보"));
+    characters.push_back(createMysticalCat("먀엉", "지혜의 수호자"));
+    
+    return characters;
 }
 
 } // namespace learning 

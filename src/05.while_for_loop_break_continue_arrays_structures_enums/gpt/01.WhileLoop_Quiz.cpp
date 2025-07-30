@@ -9,7 +9,7 @@
 #include <random>
 #include <fstream>
 #include <sstream>
-#include "../../../../p_cpp/src/core/Character.h"
+#include "Character.h"
 
 using std::cout;
 using std::cin;
@@ -22,9 +22,6 @@ using std::ofstream;
 using std::ifstream;
 using std::ostringstream;
 using std::istringstream;
-using learning::Character;
-using learning::Species;
-using learning::Emotion;
 
 // 퀴즈 유형 열거형
 enum class QuizType {
@@ -86,7 +83,7 @@ void printCyan(const string& text) {
 // Enter 키 대기 함수
 void pressEnterToContinue(const Character& speaker, const string& emotion = "default", const string& message = "계속하려면 Enter 키를 누르세요...") {
     speaker.display(emotion);
-    printBlue("[" + speaker.getName() + "]: ");
+    printBlue("[" + speaker.name + "]: ");
     cout << message << endl;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
@@ -379,8 +376,8 @@ void conductQuiz(Character& quizMaster, Character& student, const vector<QuizQue
     printRed(quizTitle + "\n");
     cout << string(50, '=') << endl;
     
-    quizMaster.display(Emotion::QUIZ);
-    printBlue("[" + quizMaster.getName() + "]: ");
+    quizMaster.display("thinking");
+    printBlue("[" + quizMaster.name + "]: ");
     cout << "퀴즈를 시작할게요! 준비되셨나요? 🎯\n";
     
     for (const auto& quiz : quizzes) {
@@ -398,13 +395,13 @@ void conductQuiz(Character& quizMaster, Character& student, const vector<QuizQue
         cin >> userChoice;
         
         if (userChoice == quiz.correctIndex + 1) {
-            quizMaster.display(Emotion::HAPPY);
-            printBlue("[" + quizMaster.getName() + "]: ");
+            quizMaster.display("happy");
+            printBlue("[" + quizMaster.name + "]: ");
             cout << "정답입니다! 🎉\n";
             score++;
         } else {
-            quizMaster.display(Emotion::SAD);
-            printBlue("[" + quizMaster.getName() + "]: ");
+            quizMaster.display("sad");
+            printBlue("[" + quizMaster.name + "]: ");
             cout << "틀렸어요. 정답은 " << (quiz.correctIndex + 1) << "번입니다.\n";
         }
         
@@ -458,31 +455,31 @@ int main() {
     cout << "🐾 ==========================================" << endl;
     
     // 캐릭터 초기화
-    vector<Character> all_characters = Character::initializeCharacters();
+    vector<Character> all_characters = initializeCharacters();
     
     // 보리를 주인공으로 설정
-    Character student;
+    Character student("말티즈", "보리", 130, 35);
     for (const auto& chara : all_characters) {
-        if (chara.getSpecies() == Species::MALTESE) {
+        if (chara.species == "말티즈") {
             student = chara;
             break;
         }
     }
     
     // 퀴즈 마스터 캐릭터 선택 (고양이)
-    Character quizMaster;
+    Character quizMaster("고양이", "냥냥", 70, 25);
     for (const auto& chara : all_characters) {
-        if (chara.getSpecies() == Species::CAT) {
+        if (chara.species == "고양이") {
             quizMaster = chara;
             break;
         }
     }
     
-    cout << "\n🎮 주인공: " << student.getName() << " (" << student.getRole() << ")" << endl;
-    cout << "🎓 퀴즈 마스터: " << quizMaster.getName() << " (" << quizMaster.getRole() << ")" << endl;
+    cout << "\n🎮 주인공: " << student.name << " (" << student.species << ")" << endl;
+    cout << "🎓 퀴즈 마스터: " << quizMaster.name << " (" << quizMaster.species << ")" << endl;
     
-    student.display(Emotion::HAPPY);
-    printCyan("[" + student.getName() + "]: ");
+    student.display("happy");
+    printCyan("[" + student.name + "]: ");
     cout << "안녕하세요! 퀴즈를 풀고 싶어요! 🐕\n";
     
     // 사용자 이름 입력
@@ -543,12 +540,12 @@ exit_program:
     printGreen("🎉 퀴즈 프로그램을 종료합니다! 🎉\n");
     cout << string(50, '=') << endl;
     
-    student.display(Emotion::HAPPY);
-    printCyan("[" + student.getName() + "]: ");
+    student.display("happy");
+    printCyan("[" + student.name + "]: ");
     cout << "퀴즈 재미있었어요! 다음에 또 만나요! 🐕\n";
     
-    quizMaster.display(Emotion::HAPPY);
-    printBlue("[" + quizMaster.getName() + "]: ");
+    quizMaster.display("happy");
+    printBlue("[" + quizMaster.name + "]: ");
     cout << "열심히 공부하세요! 🐱\n";
     
     return 0;
