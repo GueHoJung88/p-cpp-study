@@ -34,6 +34,10 @@ cout << cars[0];
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
 C++ Arrays and Loops
 Loop Through an Array
 You can loop through the array elements with the for loop.
@@ -159,6 +163,11 @@ You will learn much more about vectors and other data structures in a later chap
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
 C++ Array Size
 Get the Size of an Array
 To get the size of an array, you can use the sizeof() operator:
@@ -213,6 +222,11 @@ It is good to know the different ways to loop through an array, since you may en
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
 C++ Arrays Real-Life Examples
 Real Life Example
 To demonstrate a practical example of using arrays, let's create a program that calculates the average of different ages:
@@ -314,6 +328,7 @@ string letters[2][4] = {
 };
 letters[0][0] = "Z";
 
+<<<<<<< HEAD
 cout << letters[0][0];  // Now outputs "Z" instead of "A"
 ADVERTISEMENT
 
@@ -405,3 +420,6 @@ while (hits < 4) {
 
 cout << "Victory!\n";
 cout << "You won in " << numberOfTurns << " turns";
+=======
+cout << letters[0][0];  // Now outputs "Z" instead of "A"
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
