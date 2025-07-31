@@ -118,8 +118,31 @@ int QuizSystem::getCurrentQuestionIndex() const {
     return currentQuestionIndex;
 }
 
+void QuizSystem::startQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    isActive = true;
+}
+
+void QuizSystem::pauseQuiz() {
+    isActive = false;
+}
+
+void QuizSystem::resumeQuiz() {
+    isActive = true;
+}
+
+void QuizSystem::endQuiz() {
+    isActive = false;
+}
+
 bool QuizSystem::hasMoreQuestions() const {
     return currentQuestionIndex < questions.size();
+}
+
+QuizResult QuizSystem::getFinalResult() const {
+    double percentage = getPercentage();
+    return QuizResult(score, questions.size(), percentage, getResultMessage());
 }
 
 void QuizSystem::reset() {
@@ -128,10 +151,6 @@ void QuizSystem::reset() {
 }
 
 QuizResult QuizSystem::getCurrentResult() const {
-    return QuizResult(score, questions.size(), getPercentage(), getResultMessage());
-}
-
-QuizResult QuizSystem::getFinalResult() const {
     return QuizResult(score, questions.size(), getPercentage(), getResultMessage());
 }
 

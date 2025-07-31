@@ -34,7 +34,10 @@ cout << cars[0];
 
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
 C++ Arrays and Loops
 Loop Through an Array
 You can loop through the array elements with the for loop.
@@ -160,8 +163,11 @@ You will learn much more about vectors and other data structures in a later chap
 
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
 C++ Array Size
 Get the Size of an Array
 To get the size of an array, you can use the sizeof() operator:
@@ -216,8 +222,11 @@ It is good to know the different ways to loop through an array, since you may en
 
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
 C++ Arrays Real-Life Examples
 Real Life Example
 To demonstrate a practical example of using arrays, let's create a program that calculates the average of different ages:
@@ -319,4 +328,98 @@ string letters[2][4] = {
 };
 letters[0][0] = "Z";
 
+<<<<<<< HEAD
 cout << letters[0][0];  // Now outputs "Z" instead of "A"
+ADVERTISEMENT
+
+Loop Through a Multi-Dimensional Array
+To loop through a multi-dimensional array, you need one loop for each of the array's dimensions.
+
+The following example outputs all elements in the letters array:
+
+Example
+string letters[2][4] = {
+  { "A", "B", "C", "D" },
+  { "E", "F", "G", "H" }
+};
+
+for (int i = 0; i < 2; i++) {
+  for (int j = 0; j < 4; j++) {
+    cout << letters[i][j] << "\n";
+  }
+}
+This example shows how to loop through a three-dimensional array:
+
+Example
+string letters[2][2][2] = {
+  {
+    { "A", "B" },
+    { "C", "D" }
+  },
+  {
+    { "E", "F" },
+    { "G", "H" }
+  }
+};
+
+for (int i = 0; i < 2; i++) {
+  for (int j = 0; j < 2; j++) {
+    for (int k = 0; k < 2; k++) {
+      cout << letters[i][j][k] << "\n";
+    }
+  }
+}
+Why Multi-Dimensional Arrays?
+Multi-dimensional arrays are great at representing grids. This example shows a practical use for them. In the following example we use a multi-dimensional array to represent a small game of Battleship:
+
+Example
+// We put "1" to indicate there is a ship.
+bool ships[4][4] = {
+  { 0, 1, 1, 0 },
+  { 0, 0, 0, 0 },
+  { 0, 0, 1, 0 },
+  { 0, 0, 1, 0 }
+};
+
+// Keep track of how many hits the player has and how many turns they have played in these variables
+int hits = 0;
+int numberOfTurns = 0;
+
+// Allow the player to keep going until they have hit all four ships
+while (hits < 4) {
+  int row, column;
+
+  cout << "Selecting coordinates\n";
+
+  // Ask the player for a row
+  cout << "Choose a row number between 0 and 3: ";
+  cin >> row;
+
+  // Ask the player for a column
+  cout << "Choose a column number between 0 and 3: ";
+  cin >> column;
+
+  // Check if a ship exists in those coordinates
+  if (ships[row][column]) {
+    // If the player hit a ship, remove it by setting the value to zero.
+    ships[row][column] = 0;
+
+    // Increase the hit counter
+    hits++;
+
+    // Tell the player that they have hit a ship and how many ships are left
+    cout << "Hit! " << (4-hits) << " left.\n\n";
+  } else {
+    // Tell the player that they missed
+    cout << "Miss\n\n";
+  }
+
+  // Count how many turns the player has taken
+  numberOfTurns++;
+}
+
+cout << "Victory!\n";
+cout << "You won in " << numberOfTurns << " turns";
+=======
+cout << letters[0][0];  // Now outputs "Z" instead of "A"
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40

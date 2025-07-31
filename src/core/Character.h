@@ -19,7 +19,9 @@ enum class Emotion {
     QUIZ,
     JUDGE,
     CORRECT,
-    WRONG
+    WRONG,
+    EXCITED,
+    PROUD
 };
 
 // 캐릭터 종류 열거형 (기존 gemini 파일의 모든 캐릭터 포함)
@@ -78,6 +80,21 @@ private:
     void initializeHumanLikiArt();
     void initializeHumanBaboArt();
     void initializeMysticalCatArt();
+    
+    // 종별 상세 ASCII 아트 출력 함수들
+    void displayChihuahua(Emotion emotion) const;
+    void displayWelshCorgi(Emotion emotion) const;
+    void displayGoldenRetriever(Emotion emotion) const;
+    void displayHusky(Emotion emotion) const;
+    void displayRabbit(Emotion emotion) const;
+    void displayCat(Emotion emotion) const;
+    void displayMaltese(Emotion emotion) const;
+    void displayBichonFrise(Emotion emotion) const;
+    void displayBulldog(Emotion emotion) const;
+    void displayHumanLiki(Emotion emotion) const;
+    void displayHumanBabo(Emotion emotion) const;
+    void displayMysticalCat(Emotion emotion) const;
+    void displayDefault(Emotion emotion) const;
 
 public:
     // 기본 생성자 (테스트용)
@@ -110,11 +127,21 @@ public:
     int getHp() const { return hp; }
     int getPower() const { return power; }
     
+    // 상세 프로필 설정자
+    void setAge(int a) { age = a; }
+    void setAssets(long long a) { assets = a; }
+    void setHometown(const std::string& h) { hometown = h; }
+    void setGender(const std::string& g) { gender = g; }
+    void setSocialStatus(const std::string& s) { social_status = s; }
+    void setIdealType(const std::string& i) { ideal_type = i; }
+    void setFutureHope(const std::string& f) { future_hope = f; }
+    void setWeakness(const std::string& w) { weakness = w; }
+    void setHp(int h) { hp = h; }
+    void setPower(int p) { power = p; }
+    
     // 기존 코드 호환성을 위한 접근자들
     std::string getSpeciesString() const;
     void setSpecies(const std::string& s);
-    void setHp(int h) { hp = h; }
-    void setPower(int p) { power = p; }
     
     // 게임 시스템
     void gainExperience(int exp);
@@ -158,6 +185,7 @@ private:
     std::vector<Character> characters;
     
 public:
+    CharacterManager() = default;
     void addCharacter(const Character& character);
     Character* getCharacterByName(const std::string& name);
     Character* getCharacterBySpecies(Species species);
@@ -172,6 +200,25 @@ public:
     Character* getStrongestCharacter() const;
     Character* getWeakestCharacter() const;
     double getAverageLevel() const;
+};
+
+// 캐릭터 팩토리 클래스
+class CharacterFactory {
+public:
+    static Character createChihuahua(const std::string& name = "치치", const std::string& role = "선생님");
+    static Character createWelshCorgi(const std::string& name = "코코", const std::string& role = "도우미");
+    static Character createGoldenRetriever(const std::string& name = "리버", const std::string& role = "친구");
+    static Character createHusky(const std::string& name = "허허", const std::string& role = "모험가");
+    static Character createRabbit(const std::string& name = "토토", const std::string& role = "학생");
+    static Character createCat(const std::string& name = "냥냥", const std::string& role = "고양이");
+    static Character createMaltese(const std::string& name = "보리", const std::string& role = "주인공");
+    static Character createBichonFrise(const std::string& name = "숑숑", const std::string& role = "미용사");
+    static Character createBulldog(const std::string& name = "불리", const std::string& role = "경비원");
+    static Character createHumanLiki(const std::string& name = "리키", const std::string& role = "학생");
+    static Character createHumanBabo(const std::string& name = "바보", const std::string& role = "바보");
+    static Character createMysticalCat(const std::string& name = "먀엉", const std::string& role = "지혜의 수호자");
+    
+    static std::vector<Character> initializeAllCharacters();
 };
 
 } // namespace learning 

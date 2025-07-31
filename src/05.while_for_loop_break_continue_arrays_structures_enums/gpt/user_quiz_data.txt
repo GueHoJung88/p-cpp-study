@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 username:
 reviewQuizScore:0
 finalQuizScore:0
@@ -7,3 +9,4 @@ totalFinalQuestions:0
 totalPracticeQuestions:0
 lastQuizDate:
 completedCategories:
+>>>>>>> 6dea0b1af09a05e785d79e85678cc67052a32d40
