@@ -1,0 +1,263 @@
+C++ Memory Address
+Memory Address
+In the example from the previous page, the & operator was used to create a reference variable. But it can also be used to get the memory address of a variable; which is the location of where the variable is stored on the computer.
+
+When a variable is created in C++, a memory address is assigned to the variable. And when we assign a value to the variable, it is stored in this memory address.
+
+To access it, use the & operator, and the result will represent where the variable is stored:
+
+Example
+string food = "Pizza";
+
+cout << &food; // Outputs 0x6dfed4
+Note: The memory address is in hexadecimal form (0x..). Note that you may not get the same result in your program.
+
+And why is it useful to know the memory address?
+References and Pointers (which you will learn about in the next chapter) are important in C++, because they give you the ability to manipulate the data in the computer's memory - which can reduce the code and improve the performance.
+
+These two features are one of the things that make C++ stand out from other programming languages, like Python and Java.
+
+C++ Pointers
+Creating Pointers
+You learned from the previous chapter, that we can get the memory address of a variable by using the & operator:
+
+Example
+string food = "Pizza"; // A food variable of type string
+
+cout << food;  // Outputs the value of food (Pizza)
+cout << &food; // Outputs the memory address of food (0x6dfed4)
+A pointer however, is a variable that stores the memory address as its value.
+
+A pointer variable points to a data type (like int or string) of the same type, and is created with the * operator. The address of the variable you're working with is assigned to the pointer:
+
+Example
+string food = "Pizza";  // A food variable of type string
+string* ptr = &food;    // A pointer variable, with the name ptr, that stores the address of food
+
+// Output the value of food (Pizza)
+cout << food << "\n";
+
+// Output the memory address of food (0x6dfed4)
+cout << &food << "\n";
+
+// Output the memory address of food with the pointer (0x6dfed4)
+cout << ptr << "\n";
+Example explained
+Create a pointer variable with the name ptr, that points to a string variable, by using the asterisk sign * (string* ptr). Note that the type of the pointer has to match the type of the variable you're working with.
+
+Use the & operator to store the memory address of the variable called food, and assign it to the pointer.
+
+Now, ptr holds the value of food's memory address.
+
+Tip: There are three ways to declare pointer variables, but the first way is preferred:
+
+string* mystring; // Preferred
+string *mystring;
+string * mystring;
+
+C++ Dereference
+Get Memory Address and Value
+In the example from the previous page, we used the pointer variable to get the memory address of a variable (used together with the & reference operator). However, you can also use the pointer to get the value of the variable, by using the * operator (the dereference operator):
+
+Example
+string food = "Pizza";  // Variable declaration
+string* ptr = &food;    // Pointer declaration
+
+// Reference: Output the memory address of food with the pointer (0x6dfed4)
+cout << ptr << "\n";
+
+// Dereference: Output the value of food with the pointer (Pizza)
+cout << *ptr << "\n";
+Note that the * sign can be confusing here, as it does two different things in our code:
+
+When used in declaration (string* ptr), it creates a pointer variable.
+When not used in declaration, it act as a dereference operator.
+
+C++ Modify Pointers
+Modify the Pointer Value
+You can also change the pointer's value. But note that this will also change the value of the original variable:
+
+Example
+string food = "Pizza";
+string* ptr = &food;
+
+// Output the value of food (Pizza)
+cout << food << "\n";
+
+// Output the memory address of food (0x6dfed4)
+cout << &food << "\n";
+
+// Access the memory address of food and output its value (Pizza)
+cout << *ptr << "\n";
+
+// Change the value of the pointer
+*ptr = "Hamburger";
+
+// Output the new value of the pointer (Hamburger)
+cout << *ptr << "\n";
+
+// Output the new value of the food variable (Hamburger)
+cout << food << "\n";
+
+
+C++ References
+Creating References
+A reference variable is an alias for an existing variable. It is created using the & operator:
+
+string food = "Pizza";  // food variable
+string &meal = food;    // reference to food
+Now, you can use either food or meal to refer to the same value:
+
+Example
+string food = "Pizza";
+string &meal = food;
+
+cout << food << "\n";  // Outputs Pizza
+cout << meal << "\n";  // Outputs Pizza
+Note: Both food and meal refer to the same memory location. Changing one affects the other.
+
+
+
+Pointers and References in C++
+Last Updated : 12 Jul, 2025
+In C++ pointers and references both are mechanisms used to deal with memory, memory address, and data in a program. Pointers are used to store the memory address of another variable whereas references are used to create an alias for an already existing variable.
+
+Pointers in C++
+Pointers in C++ are a symbolic representation of addresses. They enable programs to simulate call-by-reference and create and manipulate dynamic data structures. Pointers store the address of variables or a memory location. 
+
+Syntax
+datatype *var_name; 
+for example, int *ptr; //ptr points to an address that holds int data.
+
+Example of Pointers in C++
+The below program demonstrates the use of pointers in C++.
+
+
+
+
+// C++ program to demonstrate use of pointers in C++;
+​
+#include <iostream>
+using namespace std;
+​
+int main()
+{
+    int x = 10; // variable declared
+    int* myptr; // pointer variable
+​
+    // storing address of x in pointer myptr
+    myptr = &x;
+​
+    cout << "Value of x is: ";
+    cout << x << endl;
+​
+    // print the address stored in myptr pointer variable
+    cout << "Address stored in myptr is: ";
+    cout << myptr << endl;
+​
+    // printing value of x using pointer myptr
+    cout << "Value of x using *myptr is: ";
+    cout << *myptr << endl;
+​
+    return 0;
+}
+
+Output
+Value of x is: 10
+Address stored in myptr is: 0x7ffd2b32c7f4
+Value of x using *myptr is: 10
+Explanation: The above program declares an integer variable 'x' initialized with value 10 and a pointer variable named 'myptr'. The memory address of x is assigned to myptr. Then it prints the value of x, the address stored in myptr, and the value of x obtained by dereferencing the pointer myptr.
+
+To know more about Pointers, how it works and its mathematical background refer to Pointers in C++.
+
+Application of Pointers in C++
+Following are the Applications of Pointers in C++:
+
+To pass arguments by reference: Passing by reference serves two purposes
+For accessing array elements: The Compiler internally uses pointers to access array elements.
+To return multiple values: For example in returning square and the square root of numbers.
+Dynamic memory allocation: We can use pointers to dynamically allocate memory. The advantage of dynamically allocated memory is, that it is not deleted until we explicitly delete it.
+To implement data structures.
+To do system-level programming where memory addresses are useful.
+Features and Use of Pointers in C++
+The Pointers have a few important features and uses like it saves memory space, they are used to allocate memory dynamically, it is used for file handling, etc. Pointers store the address of variables or a memory location. 
+Example: pointer “ptr” holds the address of an integer variable or holds the address of memory whose value(s) can be accessed as integer values through “ptr”.
+
+int *ptr;
+'this' Pointer in C++
+The 'this' pointer is passed as a hidden argument to all nonstatic member function calls and is available as a local variable within the body of all nonstatic functions. ‘this’ pointer is not available in static member functions as static member functions can be called without any object (with class name). Even if only one member of each function exists which is used by multiple objects, the compiler supplies an implicit pointer along with the names of the functions as ‘this’. 
+Declaration: 
+
+this->x = x; 
+References in C++
+When a variable is declared as a reference, it becomes an alternative name for an existing variable. A variable can be declared as a reference by putting ‘&’ in the declaration. There are 3 ways to pass C++ arguments to a function: 
+
+call-by-value
+call-by-reference with a pointer argument
+call-by-reference with a reference argument
+Example of References in C++
+The below program demonstrates the use of references in C++.
+
+
+
+
+// C++ Program to demonstrate use of references
+​
+#include <iostream>
+using namespace std;
+​
+int main()
+{
+    int y = 10;
+​
+    // ref is a reference to x.
+    int& myref = y;
+​
+    // changing value of y to 20
+    y = 30;
+    cout << "value of y is " << y << endl;
+    cout << "value of myref after change in value of y is: "
+         << myref << '\n';
+​
+    return 0;
+}
+
+Output
+value of y is 30
+value of myref after change in value of y is: 30
+Explanation: The above program demonstrates the use of references. First, it declares an integer variable 'y' and then creates reference 'myref' which is an alias to y. Changing the value of y also changes the value of myref which can be seen after printing values of both y and myref.
+
+Pointers vs References
+Pointers vs References in C++: This article lays the proper ground for differences between Pointer and references. Both references and pointers can be used to change the local variables of one function inside another function. Both of them can also be used to save copying of big objects when passed as arguments to functions or returned from functions, to get efficiency gain. 
+Despite the above similarities, there are the following differences between references and pointers. 
+
+
+
+Note A pointer can be declared as void but a reference can never be void.For example:
+
+
+
+
+
+int a = 10;
+
+
+
+
+
+void*aa = &a;. //it is valid
+
+
+
+
+
+void &ar = a; // it is not valid
+
+
+
+References are less powerful than pointers
+Once a reference is created, it cannot be later made to reference another object; it cannot be reseated. This is often done with pointers.
+References cannot be NULL. Pointers are often made NULL to indicate that they are not pointing to any valid thing.
+A reference must be initialized when declared. There is no such restriction with pointers
+Passing by pointer Vs Passing by Reference in C++: In C++, we can pass parameters to a function either by pointers or by reference. In both cases, we get the same result. So what should be preferred and why?
+Passing Reference to a Pointer in C++: In this article let’s compare the usage of a “pointer to pointer” VS “Reference to pointer” in some cases.
