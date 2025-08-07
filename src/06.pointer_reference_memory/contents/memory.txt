@@ -1,0 +1,104 @@
+C++ new and delete
+The new Keyword
+The new keyword lets you manage memory yourself.
+
+In the example below, we create memory space for an integer using new, store the value 35 in it, and print it using a pointer:
+
+Example
+int* ptr = new int;
+*ptr = 35;
+cout << *ptr;
+Explanation:
+
+new int creates memory space for one integer
+ptr stores the address of that space
+*ptr = 35; stores the number 35
+cout << *ptr; prints the value
+So we used new to create memory, and ptr to access it.
+
+The delete Keyword
+When you create something with new, it's your job to remove it when you're done.
+
+To do that, use delete:
+
+Example
+delete ptr;
+This tells C++: "I'm done with this memory, you can clean it up now."
+
+What Happens If You Forget delete?
+If you forget to delete memory, your program will still run, but it may use more and more memory over time.
+
+This is called a memory leak, and it can slow down or crash your program over time.
+
+Using new and delete with Arrays
+You can also use the new keyword to create dynamic arrays.
+
+Note: For arrays, use new[] and delete[]. For single variables, use new and delete.
+
+Dynamic arrays are useful when you don't know the size of the array in advance - like when the size depends on user input or other values that are not known at the start of the program.
+
+For example, imagine you run a hotel. Since you don't know how many guests will arrive, you ask the user for the number and create that many rooms - one to store each guest's name:
+
+Example
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  int numGuests;
+  cout << "How many guests? ";
+  cin >> numGuests;
+
+  // Check for invalid input
+  if (numGuests <= 0) {
+    cout << "Number of guests must be at least 1.\n";
+    return 0;
+  }
+
+  // Create memory space for x guests (an array of strings)
+  string* guests = new string[numGuests];
+
+  // Ignore the leftover newline character after reading numGuests
+  cin.ignore();
+
+  // Enter guest names
+  for (int i = 0; i < numGuests; i++) {
+    cout << "Enter name for guest " << (i + 1) << ": ";
+    getline(cin, guests[i]); // Read the full name (including spaces)
+  }
+
+  // Show all guests
+  cout << "\nGuests checked in:\n";
+  for (int i = 0; i < numGuests; i++) {
+    cout << guests[i] << "\n";
+  }
+
+  delete[] guests; // Clean up memory
+  return 0;
+}
+Example Result:
+
+How many guests? 3
+Enter name for guest 1: John Doe
+Enter name for guest 2: Liam Spurs
+Enter name for guest 3: Jenny Kasp
+Guests checked in:
+John Doe
+Liam Spurs
+Jenny Kasp
+When to Use new
+In most cases, you don't need to use new. C++ will automatically handle memory for normal variables like:
+
+int age = 35;
+string name = "John";
+But sometimes, you have to manage memory yourself - especially when:
+
+You don't know how much memory you'll need in advance (like how many guests or scores)
+You want to create memory while the program is running, based on user input
+You need to store large or flexible amounts of data
+You want full manual control over memory (e.g., performance-critical code)
+In those cases, new helps you create memory, and delete helps you clean it up when you're done.
+
+Tip: If you use new, always remember to use delete (or delete[] for arrays) to avoid memory leaks.
+
+
