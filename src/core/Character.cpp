@@ -209,6 +209,25 @@ std::string Character::getEmotionString(Emotion emotion) const {
     }
 }
 
+void Character::showProfile() const {
+    std::cout << "=== " << name << "의 프로필 ===" << std::endl;
+    std::cout << "종족: " << getSpeciesString() << std::endl;
+    std::cout << "역할: " << role << std::endl;
+    std::cout << "레벨: " << level << std::endl;
+    std::cout << "경험치: " << experience << "/" << maxExperience << std::endl;
+    std::cout << "나이: " << age << "세" << std::endl;
+    std::cout << "자산: " << assets << "원" << std::endl;
+    std::cout << "고향: " << hometown << std::endl;
+    std::cout << "성별: " << gender << std::endl;
+    std::cout << "사회적 지위: " << social_status << std::endl;
+    std::cout << "이상형: " << ideal_type << std::endl;
+    std::cout << "미래 희망: " << future_hope << std::endl;
+    std::cout << "약점: " << weakness << std::endl;
+    std::cout << "체력: " << hp << std::endl;
+    std::cout << "공격력: " << power << std::endl;
+    std::cout << "========================" << std::endl;
+}
+
 // 종별 상세 ASCII 아트 출력 함수들
 void Character::displayChihuahua(Emotion emotion) const {
     switch (emotion) {
@@ -952,6 +971,266 @@ std::vector<Character> CharacterFactory::initializeAllCharacters() {
     characters.push_back(createMysticalCat("먀엉", "지혜의 수호자"));
     
     return characters;
+}
+
+// 성격 시스템 메서드 구현
+void Character::setPersonalityTrait(const std::string& trait, int value) {
+    personalityTraits[trait] = value;
+}
+
+void Character::setPersonalityTrait(PersonalityTrait trait, int value) {
+    std::string traitName;
+    switch (trait) {
+        case PersonalityTrait::FRIENDLINESS: traitName = "친근함"; break;
+        case PersonalityTrait::KNOWLEDGE: traitName = "지식"; break;
+        case PersonalityTrait::PATIENCE: traitName = "인내심"; break;
+        case PersonalityTrait::CREATIVITY: traitName = "창의성"; break;
+        case PersonalityTrait::LEADERSHIP: traitName = "리더십"; break;
+        case PersonalityTrait::HUMOR: traitName = "유머감각"; break;
+        case PersonalityTrait::COURAGE: traitName = "용기"; break;
+        case PersonalityTrait::WISDOM: traitName = "지혜"; break;
+    }
+    personalityTraits[traitName] = value;
+}
+
+int Character::getPersonalityTrait(const std::string& trait) const {
+    auto it = personalityTraits.find(trait);
+    return (it != personalityTraits.end()) ? it->second : 5; // 기본값 5
+}
+
+int Character::getPersonalityTrait(PersonalityTrait trait) const {
+    std::string traitName;
+    switch (trait) {
+        case PersonalityTrait::FRIENDLINESS: traitName = "친근함"; break;
+        case PersonalityTrait::KNOWLEDGE: traitName = "지식"; break;
+        case PersonalityTrait::PATIENCE: traitName = "인내심"; break;
+        case PersonalityTrait::CREATIVITY: traitName = "창의성"; break;
+        case PersonalityTrait::LEADERSHIP: traitName = "리더십"; break;
+        case PersonalityTrait::HUMOR: traitName = "유머감각"; break;
+        case PersonalityTrait::COURAGE: traitName = "용기"; break;
+        case PersonalityTrait::WISDOM: traitName = "지혜"; break;
+    }
+    return getPersonalityTrait(traitName);
+}
+
+std::string Character::getSituationalResponse(const std::string& situation, const std::string& context) const {
+    if (situation == "QUIZ") {
+        if (context == "CORRECT") {
+            return "정답입니다! 정말 잘했어요! 🎉";
+        } else if (context == "WRONG") {
+            return "틀렸어요. 힌트를 드릴게요! 💡";
+        }
+    }
+    return "흥미로운 상황이네요! 🤔";
+}
+
+std::string Character::startConversation(const std::string& target) const {
+    return "안녕하세요 " + target + "님! 반갑습니다! 😊";
+}
+
+std::string Character::respondToMessage(const std::string& message) const {
+    if (message.find("안녕") != std::string::npos) {
+        return "안녕하세요! 정말 반갑습니다! 🌟";
+    }
+    return "흥미로운 말씀이네요! 🤗";
+}
+
+std::string Character::getPersonalityBasedAction(const std::string& action) const {
+    if (action == "GREETING") {
+        int friendliness = getPersonalityTrait("친근함");
+        if (friendliness >= 8) {
+            return "반갑습니다! 정말 기뻐요! 🎉";
+        } else if (friendliness >= 5) {
+            return "안녕하세요! 😊";
+        } else {
+            return "안녕... 😶";
+        }
+    }
+    return "무슨 일이신가요? 🤔";
+}
+
+std::string Character::getPersonalityBasedAction(SituationType action) const {
+    switch (action) {
+        case SituationType::GREETING:
+            return getPersonalityBasedAction("GREETING");
+        case SituationType::LEARNING:
+            return getPersonalityBasedAction("LEARNING");
+        case SituationType::ENCOURAGEMENT:
+            return getPersonalityBasedAction("ENCOURAGEMENT");
+        default:
+            return "무슨 일이신가요? 🤔";
+    }
+}
+
+std::string Character::getSituationalResponse(SituationType situation, const std::string& context) const {
+    switch (situation) {
+        case SituationType::QUIZ:
+            if (context == "CORRECT") {
+                return "정답입니다! 정말 잘했어요! 🎉";
+            } else if (context == "WRONG") {
+                return "틀렸어요. 힌트를 드릴게요! 💡";
+            }
+            break;
+        case SituationType::SUCCESS:
+            return "축하합니다! 정말 대단해요! 🎊";
+        case SituationType::FAILURE:
+            return "괜찮아요. 다음에는 성공할 거예요! 💪";
+        case SituationType::ENCOURAGEMENT:
+            return "힘내세요! 당신은 할 수 있어요! 🌟";
+    }
+    return "흥미로운 상황이네요! 🤔";
+}
+
+std::string Character::getPersonalitySummary() const {
+    if (personalityTraits.empty()) {
+        return "아직 성격 특성이 설정되지 않았습니다.";
+    }
+    
+    std::string summary = "성격 특성 요약:\n";
+    for (const auto& trait : personalityTraits) {
+        summary += "  " + trait.first + ": " + std::to_string(trait.second) + "/10\n";
+    }
+    return summary;
+}
+
+double Character::getPersonalityAverage() const {
+    if (personalityTraits.empty()) {
+        return 5.0; // 기본값
+    }
+    
+    double sum = 0.0;
+    for (const auto& trait : personalityTraits) {
+        sum += trait.second;
+    }
+    return sum / personalityTraits.size();
+}
+
+std::string Character::getDominantTrait() const {
+    if (personalityTraits.empty()) {
+        return "없음";
+    }
+    
+    std::string dominantTrait;
+    int maxValue = -1;
+    
+    for (const auto& trait : personalityTraits) {
+        if (trait.second > maxValue) {
+            maxValue = trait.second;
+            dominantTrait = trait.first;
+        }
+    }
+    
+    return dominantTrait;
+}
+
+// 미션 클래스 구현
+Mission::Mission(const std::string& t, const std::string& desc, int r, 
+                 MissionDifficulty diff, const std::string& creator)
+    : title(t), description(desc), reward(r), status(MissionStatus::NOT_STARTED), 
+      progress(0), difficulty(diff), createdBy(creator) {
+}
+
+void Mission::start() {
+    status = MissionStatus::IN_PROGRESS;
+    progress = 0;
+}
+
+void Mission::updateProgress(int newProgress) {
+    if (status == MissionStatus::IN_PROGRESS) {
+        progress = std::min(100, std::max(0, newProgress));
+        if (progress >= 100) {
+            complete();
+        }
+    }
+}
+
+void Mission::complete() {
+    status = MissionStatus::COMPLETED;
+    progress = 100;
+}
+
+void Mission::fail() {
+    status = MissionStatus::FAILED;
+}
+
+void Mission::giveReward(Character& character) {
+    if (status == MissionStatus::COMPLETED) {
+        character.gainExperience(reward);
+    }
+}
+
+std::string Mission::getStatusString() const {
+    switch (status) {
+        case MissionStatus::NOT_STARTED: return "시작 전";
+        case MissionStatus::IN_PROGRESS: return "진행 중";
+        case MissionStatus::COMPLETED: return "완료";
+        case MissionStatus::FAILED: return "실패";
+        default: return "알 수 없음";
+    }
+}
+
+std::string Mission::getDifficultyString() const {
+    switch (difficulty) {
+        case MissionDifficulty::EASY: return "쉬움";
+        case MissionDifficulty::NORMAL: return "보통";
+        case MissionDifficulty::HARD: return "어려움";
+        case MissionDifficulty::EXPERT: return "전문가";
+        default: return "알 수 없음";
+    }
+}
+
+void Mission::display() const {
+    std::cout << "=== " << title << " ===" << std::endl;
+    std::cout << "설명: " << description << std::endl;
+    std::cout << "보상: " << reward << " 경험치" << std::endl;
+    std::cout << "상태: " << getStatusString() << std::endl;
+    std::cout << "진행률: " << progress << "%" << std::endl;
+    std::cout << "난이도: " << getDifficultyString() << std::endl;
+    if (!createdBy.empty()) {
+        std::cout << "생성자: " << createdBy << std::endl;
+    }
+    std::cout << "==================" << std::endl;
+}
+
+// Character 클래스의 미션 시스템 메서드 구현
+Mission Character::createMission(const std::string& title, const std::string& description, 
+                                int reward, MissionDifficulty difficulty) const {
+    return Mission(title, description, reward, difficulty, name);
+}
+
+void Character::addMission(const Mission& mission) {
+    missions.push_back(mission);
+}
+
+Mission* Character::getMission(const std::string& title) {
+    for (auto& mission : missions) {
+        if (mission.getTitle() == title) {
+            return &mission;
+        }
+    }
+    return nullptr;
+}
+
+int Character::getMissionCount() const {
+    return missions.size();
+}
+
+std::vector<Mission> Character::getAllMissions() const {
+    return missions;
+}
+
+void Character::removeMission(const std::string& title) {
+    missions.erase(
+        std::remove_if(missions.begin(), missions.end(),
+            [&title](const Mission& mission) {
+                return mission.getTitle() == title;
+            }),
+        missions.end()
+    );
+}
+
+void Character::clearMissions() {
+    missions.clear();
 }
 
 } // namespace learning 

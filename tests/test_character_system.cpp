@@ -19,8 +19,8 @@ protected:
         welshCorgi = Character("코코", Species::WELSH_CORGI, "도우미");
         goldenRetriever = Character("리버", Species::GOLDEN_RETRIEVER, "친구");
         husky = Character("허허", Species::HUSKY, "모험가");
-        rabbit = Character("토토", Species::RABBIT, "퀴즈");
-        cat = Character("냥냥", Species::CAT, "채점");
+        rabbit = Character("토토", Species::RABBIT, "학생");
+        cat = Character("냥냥", Species::CAT, "고양이");
         maltese = Character("보리", Species::MALTESE, "주인공");
         humanLiki = Character("Liki", Species::HUMAN_LIKI, "학생");
         humanBabo = Character("바보", Species::HUMAN_BABO, "분위기메이커");

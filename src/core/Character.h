@@ -24,6 +24,45 @@ enum class Emotion {
     PROUD
 };
 
+// 성격 특성 타입 열거형
+enum class PersonalityTrait {
+    FRIENDLINESS,    // 친근함
+    KNOWLEDGE,       // 지식
+    PATIENCE,        // 인내심
+    CREATIVITY,      // 창의성
+    LEADERSHIP,      // 리더십
+    HUMOR,           // 유머감각
+    COURAGE,         // 용기
+    WISDOM           // 지혜
+};
+
+// 상황 타입 열거형
+enum class SituationType {
+    QUIZ,
+    GREETING,
+    LEARNING,
+    CHALLENGE,
+    SUCCESS,
+    FAILURE,
+    ENCOURAGEMENT
+};
+
+// 미션 상태 열거형
+enum class MissionStatus {
+    NOT_STARTED,
+    IN_PROGRESS,
+    COMPLETED,
+    FAILED
+};
+
+// 미션 난이도 열거형
+enum class MissionDifficulty {
+    EASY,
+    NORMAL,
+    HARD,
+    EXPERT
+};
+
 // 캐릭터 종류 열거형 (기존 gemini 파일의 모든 캐릭터 포함)
 enum class Species {
     CHIHUAHUA,          // 치와와
@@ -38,6 +77,51 @@ enum class Species {
     HUMAN_LIKI,         // 임정찬 (Liki)
     HUMAN_BABO,         // 정규호 (바보)
     MYSTICAL_CAT        // 싀백 (먀엉)
+};
+
+// 전방 선언
+class Character;
+
+// 미션 클래스
+class Mission {
+private:
+    std::string title;
+    std::string description;
+    int reward;
+    MissionStatus status;
+    int progress;
+    MissionDifficulty difficulty;
+    std::string createdBy;
+    
+public:
+    Mission(const std::string& t, const std::string& desc, int r, 
+            MissionDifficulty diff = MissionDifficulty::NORMAL, 
+            const std::string& creator = "");
+    
+    // 접근자
+    std::string getTitle() const { return title; }
+    std::string getDescription() const { return description; }
+    int getReward() const { return reward; }
+    MissionStatus getStatus() const { return status; }
+    int getProgress() const { return progress; }
+    MissionDifficulty getDifficulty() const { return difficulty; }
+    std::string getCreatedBy() const { return createdBy; }
+    
+    // 설정자
+    void setStatus(MissionStatus s) { status = s; }
+    void setProgress(int p) { progress = p; }
+    
+    // 미션 관리 메서드
+    void start();
+    void updateProgress(int newProgress);
+    void complete();
+    void fail();
+    void giveReward(Character& character);
+    
+    // 미션 정보 출력
+    std::string getStatusString() const;
+    std::string getDifficultyString() const;
+    void display() const;
 };
 
 class Character {
@@ -66,6 +150,14 @@ private:
     
     // 감정별 ASCII 아트 저장
     std::map<Emotion, std::vector<std::string>> emotionArt;
+    
+    // 성격 시스템 관련 멤버 변수
+    std::map<std::string, int> personalityTraits;  // 성격 특성 (친근함, 지식, 인내심 등)
+    std::map<std::string, std::map<std::string, std::string>> situationalResponses;  // 상황별 반응
+    std::map<std::string, std::vector<std::string>> conversationTemplates;  // 대화 템플릿
+    
+    // 미션 시스템 관련 멤버 변수
+    std::vector<Mission> missions;  // 미션 목록
     
     // 캐릭터별 기본 ASCII 아트 초기화
     void initializeChihuahuaArt();
@@ -115,6 +207,13 @@ public:
     int getExperience() const { return experience; }
     int getMaxExperience() const { return maxExperience; }
     
+    // 기본 설정자
+    void setName(const std::string& n) { name = n; }
+    void setRole(const std::string& r) { role = r; }
+    void setLevel(int l) { level = l; }
+    void setExperience(int exp) { experience = exp; }
+    void setMaxExperience(int maxExp) { maxExperience = maxExp; }
+    
     // 상세 프로필 접근자
     int getAge() const { return age; }
     long long getAssets() const { return assets; }
@@ -155,6 +254,33 @@ public:
     std::string getEmotionString(Emotion emotion) const;
     void showProfile() const;
     
+    // 성격 시스템 메서드들
+    void setPersonalityTrait(const std::string& trait, int value);
+    void setPersonalityTrait(PersonalityTrait trait, int value);
+    int getPersonalityTrait(const std::string& trait) const;
+    int getPersonalityTrait(PersonalityTrait trait) const;
+    std::string getSituationalResponse(const std::string& situation, const std::string& context) const;
+    std::string getSituationalResponse(SituationType situation, const std::string& context) const;
+    std::string startConversation(const std::string& target) const;
+    std::string respondToMessage(const std::string& message) const;
+    std::string getPersonalityBasedAction(const std::string& action) const;
+    std::string getPersonalityBasedAction(SituationType action) const;
+    
+    // 성격 시스템 유틸리티 메서드들
+    std::string getPersonalitySummary() const;
+    double getPersonalityAverage() const;
+    std::string getDominantTrait() const;
+    
+    // 미션 시스템 메서드들
+    Mission createMission(const std::string& title, const std::string& description, 
+                         int reward, MissionDifficulty difficulty = MissionDifficulty::NORMAL) const;
+    void addMission(const Mission& mission);
+    Mission* getMission(const std::string& title);
+    int getMissionCount() const;
+    std::vector<Mission> getAllMissions() const;
+    void removeMission(const std::string& title);
+    void clearMissions();
+    
     // 연산자 오버로딩
     bool operator==(const Character& other) const;
     bool operator!=(const Character& other) const;
@@ -164,8 +290,8 @@ public:
     static Character createWelshCorgi(const std::string& name = "코코", const std::string& role = "도우미");
     static Character createGoldenRetriever(const std::string& name = "리버", const std::string& role = "친구");
     static Character createHusky(const std::string& name = "허허", const std::string& role = "모험가");
-    static Character createRabbit(const std::string& name = "토토", const std::string& role = "퀴즈");
-    static Character createCat(const std::string& name = "냥냥", const std::string& role = "채점");
+    static Character createRabbit(const std::string& name = "토토", const std::string& role = "학생");
+    static Character createCat(const std::string& name = "냥냥", const std::string& role = "고양이");
     static Character createMaltese(const std::string& name = "보리", const std::string& role = "주인공");
     static Character createBichonFrise(const std::string& name = "숑숑", const std::string& role = "친구");
     static Character createBulldog(const std::string& name = "불리", const std::string& role = "보호자");
